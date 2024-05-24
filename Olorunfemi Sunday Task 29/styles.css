@@ -1,0 +1,494 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', Verdana, sans-serif;
+}
+html{
+    font-size: 62.5%;
+}
+
+.top-menu-container {
+    background-color: rgba(73, 73, 73, 0.203);
+    backdrop-filter: blur(10px);
+    position:fixed;
+    min-height: 15vh;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 66vw;
+    padding: 20px;
+    border-radius: 7px;
+    top: 0px;
+    left: 40px;
+    box-sizing: border-box;
+    z-index: 60;
+}
+.top-menu {
+    box-sizing: border-box;
+    list-style: none;
+    margin: 0 auto;
+    display: block;
+    padding: 17px 150px;
+    text-transform: uppercase;
+ }
+ .top-menu-item {
+    float: left;
+ }
+.top-menu li a {
+    padding: 0 30px 0 10px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.5rem;
+    display: block;
+    line-height: 1em;
+    transition: font-size 0.40s, color 0.8s;
+    z-index: 62;
+}
+.logo {
+    position:fixed;
+    box-sizing: border-box;
+    top:15px;
+    left: 100px;
+    width:4vw;
+    z-index: 75;
+}
+
+.top-menu li a:hover {
+    text-decoration: underline;
+    color:#fb00ff;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 36px;
+}
+.social {
+    position: fixed;
+    box-sizing: border-box;
+    list-style: none;
+    display: block;
+    top:40px;
+    font-size: .5rem; 
+    color: #fb00ff;
+    right: 58px;
+    z-index: 80;
+}
+.top-social-item {
+    float: left;
+ }
+.top-social li a {
+    padding: 0 30px 0 10px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 2rem;
+    display: block;
+    line-height: 1em;
+    transition: font-size 0.40s, color 0.8s;
+    z-index: 62;
+}
+.top-social li a:hover {
+    text-decoration: underline;
+    font-size: 2.5rem;
+    color:#fb00ff;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 36px;
+}
+.hero{
+    position: absolute;
+    width: 45vw;
+    left:710px;
+    top: 0px; 
+    z-index: 20;
+}
+.hero2{
+    position: absolute;
+    width: 45vw;
+    left:720px;
+    top: 250px; 
+    z-index: 2;
+}
+.section2{
+    position: relative;
+    min-height: 98vh;
+    background-image:url(heroo.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 100%;
+    background-attachment: fixed;
+}
+.pesin{
+    position: absolute;
+    color: white;
+    font-size: 4rem;
+    padding:30px; 
+    line-height: 80px;
+    font-weight: 200;
+    top:120px;
+    left:70px;
+}
+.me{
+    position: absolute;
+    color: white;
+    font-size: 6.5rem;
+    padding:30px; 
+    width: 30vw;
+    line-height: 80px;
+    font-weight: 500;
+    top:220px;
+    left:70px;
+}
+.chop, .bring, .take, 
+.palm, .sendus {
+    position: absolute;
+    font-size: 2rem;
+    font-weight: bold;
+    width:4.5vw;
+    cursor: pointer;
+    background-color:rgb(146, 11, 192);
+    color: rgb(255, 255, 255);
+    transition: ease-in-out;
+    transition: background-color 0.8s, color 0.8s;
+    transition: font-size 0.8s, color 0.8s;
+    transition: width 0.8s, color 0.8s;
+    border-radius: 75px;
+    border:none;
+    height: 4vw;
+}
+.chop{    
+    top:450px;
+    left:100px;
+}
+.chop:hover{
+    position: absolute;
+    font-size: 1.8rem;
+    font-weight: bold;
+    width:15vw;
+    background-image: linear-gradient(45deg, #f465f9, #7402ff);
+    color: rgb(255, 255, 255);
+}
+.chop::before{    
+    content: "CV";
+}
+.chop:hover::before {
+    content: "Get My CV!";
+  }
+.section3{
+    position: relative;
+    min-height: 130vh;
+    background-image: url(herooo.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 100%;
+    background-attachment: fixed;
+    z-index: 50;
+}
+.head1{
+    position: absolute;
+    top: 80px;
+    left: 580px;
+    font-size: 4.3rem;
+    color: #ffffff;    
+}
+.content1{
+    position: absolute;
+    top: 180px;
+    width: 50vw;
+    text-align: center;
+    color: #ffffff;
+    left: 320px;
+    font-size: 2rem;
+    font-weight: 270;
+    line-height: 1.6;
+    overflow: hidden;
+}
+.bring{
+    top:670px;
+    left:620px;
+    transition: left 0.50s ease;
+}
+.bring:hover{
+    position: absolute;
+    font-size: 1.8rem;
+    font-weight: bold;
+    left:590px;
+    width:10vw;
+    background-image: linear-gradient(45deg, #f465f9, #7402ff);
+    color: rgb(255, 255, 255);
+}
+.bring::before{    
+    content: "\f067";
+    font-family: "Font Awesome 5 Free";
+}
+.bring:hover::before {
+    content: "Reach out";
+    font-family: Poppins;
+    font-weight: 400;
+}
+.section4{
+    position: relative;
+    min-height: 230vh;
+    background-color: #00000000;
+}
+.head2{
+    position: absolute;
+    top: 40px;
+    left: 530px;
+    width: 24vw;
+    font-size: 4.3rem;
+    color: #dd00ff;
+    font-weight: 700;
+}
+.content2{
+    position: absolute;
+    top:120px;
+    text-align: justify;
+    left: 360px;
+    font-size: 1.8rem;
+    font-weight: 500;
+    line-height: 1.6;
+}
+.img4{
+    position: absolute;
+    top: 210px;
+    transition: box-shadow 0.8s;
+    transition: height 0.8s, color 0.8s;
+    left: 710px;
+    height:45vh;
+}
+.img4:hover{
+    height:43vh;
+    box-shadow: 0 26px 28px rgba(0, 0, 0, 0.297);
+}
+.img5{
+    position: absolute;
+    height:45vh;
+    top:210px;
+    transition: box-shadow 0.8s;
+    transition: height 0.8s, color 0.8s;
+    left:90px;
+}
+.img5:hover{
+    height:43vh;
+    box-shadow: 0 26px 28px rgba(0, 0, 0, 0.297);
+}
+.img6{
+    position: absolute;
+    top: 580px;
+    transition: box-shadow 0.8s;
+    transition: height 0.8s, color 0.8s;
+    left: 90px;
+    height:45vh;
+}
+.img6:hover{
+    height:43vh;
+    box-shadow: 0 26px 28px rgba(0, 0, 0, 0.297);
+}
+.img7{
+    position: absolute;
+    top: 580px;
+    transition: box-shadow 0.8s;
+    transition: height 0.8s, color 0.8s;
+    left: 710px;
+    height:45vh;
+}
+.img7:hover{
+    height:43vh;
+    box-shadow: 0 26px 28px rgba(0, 0, 0, 0.297);
+}
+.img8{
+    position: absolute;
+    top: 910px;
+    transition: box-shadow 0.8s;
+    transition: height 0.8s, color 0.8s;
+    left: 90px;
+    height:43vh;
+}
+.img8:hover{
+    height:42vh;
+    box-shadow: 0 26px 28px rgba(0, 0, 0, 0.297);
+}
+.img9{
+    position: absolute;
+    top: 910px;
+    left: 720px;
+    transition: box-shadow 0.8s;
+    transition: height 0.8s, color 0.8s;
+    height:42vh;
+}
+.img9:hover{
+    height:40vh;
+    box-shadow: 0 26px 28px rgba(0, 0, 0, 0.297);
+}
+
+.take{
+    top:1280px;
+    left:635px;
+    transition: left 0.60s ease;
+}
+.take:hover{
+    position: absolute;
+    font-size: 1.8rem;
+    font-weight: bold;
+    left:590px;
+    width:10vw;
+    background-image: linear-gradient(45deg, #f465f9, #7402ff);
+    color: rgb(255, 255, 255);
+}
+.take::before{    
+    content: "\f067";
+    font-family: "Font Awesome 5 Free";
+}
+.take:hover::before {
+    content: "Reach out";
+    font-family: Poppins;
+    font-weight: 400;
+}
+
+.section7{
+    position: relative;
+    min-height: 130vh;
+    background-image: url(hero3.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 100%;
+    background-attachment: fixed;
+    z-index: 50;
+}
+.head5{
+    position: absolute;
+    top: 90px;
+    left: 560px;
+    font-size: 4.4rem;
+    color: #6a0374;
+    font-weight: 270;
+}
+.form{
+    position: absolute;
+    top: 190px;
+    left: 310px;
+    
+}
+#fname{
+    width: 25vw;
+    height: 8vh;
+    font-size: 1.6rem;
+    margin-top: 20px;
+    border-radius: 10px !important;
+    border:none;
+    padding-left: 10px;
+    outline: none;
+}
+#lname{
+    width: 25vw;
+    height: 8vh;
+    margin-top: 20px;
+    border-radius: 10px !important;
+    border:none;
+    padding-left: 10px;
+    font-size: 1.6rem;
+    outline: none;
+}
+#email{
+    width: 50.5vw;
+    height: 8vh;
+    margin-top: 20px;
+    margin-top: 20px;
+    border-radius: 10px !important;
+    border:none;
+    padding-left: 10px;
+    font-size: 1.6rem;
+    outline: none;
+}
+#num{
+    width: 50.5vw;
+    height: 8vh;
+    margin-top: 20px;
+    border-radius: 10px !important;
+    border:none;
+    padding-left: 10px;
+    font-size: 1.6rem;
+    outline: none;
+}
+#message{
+    width: 50.5vw;
+    height: 30vh;
+    margin-top: 20px;
+    border-radius: 10px !important;
+    border:none;
+    padding-top: 20px;
+    padding-left: 10px;
+    font-size: 1.6rem;
+    outline: none;
+}
+.sendus{
+    top:450px;
+    left:330px;
+    transition: left 0.60s ease;
+    
+}
+.sendus:hover{
+    position: absolute;
+    font-size: 1.8rem;
+    font-weight: bold;
+    left:290px;
+    width:10vw;
+    background-image: linear-gradient(45deg, #f465f9, #7402ff);
+    color: rgb(255, 255, 255);
+}
+.sendus::before{    
+    content: "\f1d8";
+    font-family: "Font Awesome 5 Free";
+}
+.sendus:hover::before {
+    content: "Reach out";
+    font-family: Poppins;
+    font-weight: 400;
+}
+.footer{
+    position: relative;
+    height: 60vh;
+    background-color: #21011f;
+    font-size: 2.3rem;
+    font-weight: 700;
+}
+.top{
+    position: absolute;
+    top: 150px;
+    width: 260vw;
+    left: 120px;
+}
+.top2{
+    position: absolute;
+    top: 150px;
+    font-weight: 300;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color:white;
+    width: 260vw;
+    left: 400px;
+    transition: font-size 0.8s, color 0.8s;
+}
+.top2:hover{ 
+    color:rgb(255, 0, 255);
+    font-size: 2.1rem;
+    
+}
+
+.logo2 img{
+    position: absolute;
+    left:100px;
+    top:100px;
+    height: 20vh;
+    width: 19vh;
+}
+.hero3{
+    position: absolute;
+    width: 26vw;
+    right:0px;
+    top: 185px; 
+    z-index: 2;
+}
+.copy{
+    position: absolute;
+    top: 120px;
+    color: #ffffff;
+    left: 700px;
+    font-size: 1.4rem;
+    font-weight: 400;
+}
