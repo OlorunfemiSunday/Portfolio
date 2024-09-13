@@ -16,21 +16,19 @@ html {
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   background-color: rgba(72, 72, 72, 0.5);
   backdrop-filter: blur(50px);
-  z-index: 40;
   position: fixed;
   width: 100%;
 }
 
 .logo-container {
-  display: flex;
-  justify-content: flex-end;
+  flex: 1;
 }
 
 .logo {
-  max-height: 50px;
-  width: auto;
+  height: 4vw;
 }
 
+/* Navigation items in the center */
 .nav-items {
   list-style: none;
   display: flex;
@@ -60,6 +58,10 @@ html {
   justify-content: flex-end;
 }
 
+.hamburger {
+  display: none; /* Hidden on desktop */
+}
+
 .icon {
   color: white;
   font-size: 1.5rem;
@@ -71,54 +73,55 @@ html {
   color: #ff6666;
   transform: scale(1.5);
 }
-
-/* Hamburger Menu Styles */
-.hamburger {
-  display: none;
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-/* Responsive Styles */
+/* Mobile Styles */
 @media (max-width: 768px) {
+  /* Hide nav items and buttons by default on mobile */
   .navbar {
-    flex-direction: row;
-    align-items: center;
-    padding: 10px;
+    padding: 10px 35px;
   }
-
-  .logo-container {
-    order: 2; /* Position the logo to the far right */
-    margin-left: auto; /* Push the logo to the far right */
-  }
-
-  .nav-items,
-  .social-icons {
+  .nav-items {
     display: none;
-    width: 100%;
-    flex-direction: row; /* Align items in a row */
-    justify-content: flex-end; /* Align items to the right */
+  }
+  .logo {
+    height: 7vw;
   }
 
-  .nav-items.active,
-  .social-icons.active {
-    display: flex;
-  }
-
-  .social-icons {
-    justify-content: center; /* Align icons in the center when visible */
-    padding: 10px 0;
-  }
-
-  .hamburger {
+  .nav-items.active {
     display: block;
-    margin-left: auto;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 40%;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.139);
+    background-color: rgba(38, 40, 38, 0.621);
+    backdrop-filter: blur(30px) !important;
+    text-align: center;
+  }
+  .nav-items i:hover {
+    background-color: #99cc33;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 10px;
+  }
+
+  .nav-items li {
+    margin-bottom: 10px;
+  }
+
+  .nav-items li a {
+    display: block;
+    padding: 10px;
+    color: #fff;
+  }
+
+  /* Show hamburger on mobile */
+  .hamburger {
+    position: absolute;
+    display: block;
+    font-size: 30px;
+    cursor: pointer;
+    right: 0px;
   }
 }
-
 /*hero section*/
 .hero-section {
   display: flex;
