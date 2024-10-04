@@ -2,60 +2,101 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", Verdana, sans-serif;
 }
 html {
   font-size: 62.5%;
+  font-family: "Clash Display", sans-serif;
 }
+
+/*font*/
+@font-face {
+  font-family: "ClashDisplay-Extralight";
+  src: url("../fonts/ClashDisplay-Extralight.woff2") format("woff2"),
+    url("../fonts/ClashDisplay-Extralight.woff") format("woff"),
+    url("../fonts/ClashDisplay-Extralight.ttf") format("truetype");
+  font-weight: 200;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "ClashDisplay-Light";
+  src: url("../fonts/ClashDisplay-Light.woff2") format("woff2"),
+    url("../fonts/ClashDisplay-Light.woff") format("woff"),
+    url("../fonts/ClashDisplay-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "ClashDisplay-Regular";
+  src: url("../fonts/ClashDisplay-Regular.woff2") format("woff2"),
+    url("../fonts/ClashDisplay-Regular.woff") format("woff"),
+    url("../fonts/ClashDisplay-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "ClashDisplay-Medium";
+  src: url("../fonts/ClashDisplay-Medium.woff2") format("woff2"),
+    url("../fonts/ClashDisplay-Medium.woff") format("woff"),
+    url("../fonts/ClashDisplay-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "ClashDisplay-Semibold";
+  src: url("../fonts/ClashDisplay-Semibold.woff2") format("woff2"),
+    url("../fonts/ClashDisplay-Semibold.woff") format("woff"),
+    url("../fonts/ClashDisplay-Semibold.ttf") format("truetype");
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+/*navbar*/
+
+@import url("/Font/ClashDisplay-Bold.woff");
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Centers the nav bar horizontally */
   align-items: center;
-  padding: 10px 40px;
-  color: white;
+  padding: 15px 0;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  background-color: rgba(72, 72, 72, 0.5);
-  backdrop-filter: blur(50px);
+  background-color: rgba(72, 72, 72, 0.146);
+  backdrop-filter: blur(60px);
   position: fixed;
-  width: 100%;
+  width: 50%;
+  border-radius: 50px;
   z-index: 160;
+  left: 50%;
+  top: 10%;
+  transform: translate(-50%, -50%); /* Center horizontally and vertically */
+  border: 1px solid rgba(91, 95, 138, 0.509);
 }
 
-.logo-container {
-  flex: 1;
-}
-
-.logo {
-  height: 4vw;
-}
-
-/* Navigation items in the center */
 .nav-items {
   list-style: none;
   display: flex;
-  gap: 20px;
-  flex: 2;
+  gap: 5px;
   justify-content: center;
 }
 
 .nav-items li a {
-  color: white;
+  color: rgb(203, 200, 200);
   text-decoration: none;
   padding: 8px 12px;
   font-size: 1.2rem;
-  transition: color 0.5s;
+  transition: color 0.7s;
 }
 
 .nav-items li a:hover {
-  text-decoration: underline;
-  color: #99cc33;
-  text-decoration-thickness: 3px;
-  text-underline-offset: 30px;
+  color: rgb(244, 179, 82);
 }
 
 .social-icons {
   display: flex;
-  gap: 15px;
+  gap: 25px;
   justify-content: flex-end;
 }
 
@@ -64,27 +105,27 @@ html {
 }
 
 .icon {
-  color: white;
+  color: rgb(250, 250, 250);
   font-size: 1.5rem;
   text-decoration: none;
   transition: color 0.3s, transform 0.3s ease;
 }
 
 .icon:hover {
-  color: #ff6666;
-  transform: scale(1.5);
+  color: #7a6a6a;
+  transform: scale(1.2);
 }
+
 /* Mobile Styles */
 @media (max-width: 768px) {
-  /* Hide nav items and buttons by default on mobile */
   .navbar {
     padding: 10px 35px;
+    width: 80%;
+    justify-content: space-between; /* Adjust spacing for smaller screens */
   }
+
   .nav-items {
     display: none;
-  }
-  .logo {
-    height: 7vw;
   }
 
   .nav-items.active {
@@ -98,6 +139,7 @@ html {
     backdrop-filter: blur(30px) !important;
     text-align: center;
   }
+
   .nav-items i:hover {
     background-color: #99cc33;
     text-decoration-thickness: 3px;
@@ -114,24 +156,35 @@ html {
     color: #fff;
   }
 
-  /* Show hamburger on mobile */
   .hamburger {
     position: absolute;
     display: block;
     font-size: 30px;
     cursor: pointer;
-    right: 0px;
+    right: 15px;
+    color: #6652ea;
   }
 }
+.icon:hover {
+  color: #bd59ec;
+  transform: scale(1.2);
+}
 /*hero section*/
+span {
+  background: linear-gradient(90deg, #fcd0d0, #6b57ed);
+  -webkit-text-fill-color: transparent;
+  font-size: 8rem;
+  font-weight: bold;
+}
 .hero-section {
   display: flex;
+  min-height: 100vh;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   padding: 20px;
   box-sizing: border-box;
-  background-image: url(./Images/hero2.png);
+  background-image: url(./Images/hero3.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -140,8 +193,9 @@ html {
 
 .hero-image {
   flex: 1;
-  max-width: 50%;
-  margin-top: 15px; /* Adjust if necessary */
+  max-width: 30vw;
+  margin-top: 70px; /* Adjust if necessary */
+  margin-left: 105px;
 }
 
 .hero-image img {
@@ -157,36 +211,40 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-right: 100px;
 }
 
 .hero-content h1 {
   font-size: 5rem;
-  margin: 0 0 10px; /* Remove bottom margin to shift up */
+  margin: 0 0 10px;
   color: #ffffff;
+  font-weight: 200;
+  margin-top: 50px;
 }
 
 .hero-content p {
-  font-size: 2rem; /* Adjust font size if needed */
-  margin: 0 0 20px; /* Remove top margin to shift up */
-  color: #ffffff;
+  font-size: 2rem;
+  margin: 0 0 20px;
+  color: #f6f6f6;
+  font-family: poppins;
 }
 
 .hero-button {
   padding: 20px 20px;
-  font-size: 1.3rem;
-  color: #fff;
-  background: linear-gradient(to right, #4b4a4a, #84807d);
-  border-radius: 10px;
+  font-size: 1.4rem;
+  color: #ffffff;
+  background: linear-gradient(to right, #c584bc, #746ac4);
+  border-radius: 50px;
   border: none;
   width: 10%;
   transition: width 0.8s ease-in-out, background-color 0.8s ease-in-out;
   position: relative;
-  overflow: hidden; /* Ensure the expanded button doesn't overflow its bounds */
+  overflow: hidden;
 }
 
 .hero-button:hover {
   width: 30%; /* Expand button on hover */
-  background: linear-gradient(to right, #f8b970, #f9f4e6);
+  background: linear-gradient(to right, #fcfcfc, #d3d3d3);
   color: black;
 }
 
@@ -201,8 +259,8 @@ html {
 
 .hero-button:hover::before {
   content: "Get My CV!";
-  opacity: 1; /* Ensure text is visible */
-  transform: translate(-50%, -50%) scale(1.1); /* Slightly scale the text */
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.1);
 }
 
 /* Responsive Styles */
@@ -211,26 +269,73 @@ html {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    min-height: 100vh;
   }
 
-  .hero-image,
   .hero-content {
     max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .hero-content h1 {
+    font-size: 3rem; /* Adjusted from 2rem for better readability */
+  }
+
+  .hero-content p {
+    font-size: 1.4rem; /* Adjusted for responsiveness */
+  }
+
+  span {
+    font-size: 4rem;
+  }
+
+  .hero-image {
+    max-width: 70vw;
+    margin: 70px 0 auto;
   }
 
   .hero-button {
     padding: 20px 25px;
     width: 20%;
   }
+
   .hero-button:hover {
     width: 50%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 2.5rem; /* Adjusted for smaller screens */
+  }
+
+  .hero-content p {
+    font-size: 1.2rem; /* Adjusted for better readability on smaller screens */
+  }
+
+  span {
+    font-size: 3rem; /* Adjusted span size */
+  }
+
+  .hero-button {
+    padding: 15px 20px;
+    width: 25%;
+  }
+
+  .hero-button:hover {
+    width: 40%;
   }
 }
 
 /*about me*/
 .about-me {
   padding: 50px 20px;
-  background: linear-gradient(to right, #f0f4f0, #d2edd7);
+  background-image: url(./Images/hero.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  /* background: linear-gradient(to right, #f0f4f0, #d2edd7); */
 }
 
 .about-me-container {
@@ -250,14 +355,14 @@ html {
 .about-me-text h1 {
   font-size: 3.5rem;
   margin-bottom: 20px;
-  color: #63871a;
+  color: #6e0557;
 }
 
 .about-me-text p {
   font-size: 1.6rem;
   line-height: 1.8;
   margin-bottom: 20px;
-  color: #555;
+  color: #010101;
 }
 
 .about-me-image {
@@ -266,7 +371,7 @@ html {
 }
 
 .about-me-image img {
-  max-width: 60%;
+  max-width: 80%;
   border-radius: 50px;
   object-fit: cover;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -278,7 +383,31 @@ html {
   transform: translateY(-5px);
 }
 .skills-container {
-  margin-top: 30px; /* Adjust as needed */
+  margin: 0 auto;
+  top: 30px; /* Adjust as needed */
+}
+
+.skills-container button {
+  background: linear-gradient(to right, #fb9e2d, #746ac4);
+  width: 10vw;
+  font-family: poppins;
+}
+.skills-container button:hover {
+  width: 26vw;
+}
+.skills-container button::before {
+  content: "Download";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+}
+
+.skills-container button:hover::before {
+  content: "Download Portfolio!";
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.1);
 }
 
 .skill {
@@ -286,7 +415,8 @@ html {
 }
 
 .skill-bar {
-  background-color: #ffffff;
+  background-color: #76757534;
+  backdrop-filter: blur(60px);
   border-radius: 25px;
   overflow: hidden;
   width: 80%;
@@ -306,15 +436,15 @@ html {
 }
 
 .js-skill .skill-level {
-  background-color: #006978;
+  background: linear-gradient(to right, #f2d3ee, #746ac4);
 }
 
 .html-skill .skill-level {
-  background-color: #ff6666;
+  background: linear-gradient(to right, #dcd5d5, #8b7878);
 }
 
 .css-skill .skill-level {
-  background-color: #87c9ac;
+  background: linear-gradient(to right, #ece5e5, #585656);
 }
 
 /* Responsive Styling */
@@ -331,6 +461,12 @@ html {
   .about-me-image {
     margin-top: 30px;
   }
+}
+.skills-container button {
+  width: 40vw;
+}
+.skills-container button:hover {
+  width: 56vw;
 }
 
 /*projects section*/
