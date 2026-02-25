@@ -1,14 +1,16 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Selectors
+    // --- 1. Selectors ---
     const hamburger = document.getElementById("hamburger");
     const navMenu = document.getElementById("nav-menu");
     const navLinks = document.querySelectorAll(".nav-items a");
     const themeBtn = document.getElementById("theme-btn");
     const themeIcon = themeBtn.querySelector("i");
+    const slider = document.getElementById("projects-slider");
+    const prevBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
+    const toast = document.getElementById("custom-toast");
 
-    // --- 1. Dark/Light Mode Toggle ---
-    
-    // Check for saved theme in localStorage
+    // --- 2. Dark/Light Mode Toggle ---
     const currentTheme = localStorage.getItem("theme");
     if (currentTheme === "dark") {
         document.documentElement.setAttribute("data-theme", "dark");
@@ -17,36 +19,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
     themeBtn.addEventListener("click", () => {
         const isDark = document.documentElement.getAttribute("data-theme") === "dark";
-        
         if (isDark) {
-            // Switch to Light Mode
             document.documentElement.setAttribute("data-theme", "light");
             themeIcon.classList.replace("fa-sun", "fa-moon");
             localStorage.setItem("theme", "light");
         } else {
-            // Switch to Dark Mode
             document.documentElement.setAttribute("data-theme", "dark");
             themeIcon.classList.replace("fa-moon", "fa-sun");
             localStorage.setItem("theme", "dark");
         }
     });
 
-    // --- 2. Mobile Menu Toggle ---
-    hamburger.addEventListener("click", () => {
+    // --- 3. Mobile Menu & Navigation ---
+    const toggleMenu = () => {
         navMenu.classList.toggle("active");
         const icon = hamburger.querySelector("i");
         icon.classList.toggle("fa-bars");
         icon.classList.toggle("fa-times");
-    });
+    };
 
-    // --- 3. Navigation Management ---
-    // Close menu when clicking a link
+    hamburger.addEventListener("click", toggleMenu);
+
     navLinks.forEach(link => {
         link.addEventListener("click", () => {
-            navMenu.classList.remove("active");
-            const icon = hamburger.querySelector("i");
-            icon.classList.add("fa-bars");
-            icon.classList.remove("fa-times");
+            if (navMenu.classList.contains("active")) toggleMenu();
         });
     });
 
@@ -55,30 +51,20 @@ document.addEventListener("DOMContentLoaded", function () {
         anchor.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href');
             if (targetId === "#") return;
-            
             e.preventDefault();
             const targetElement = document.querySelector(targetId);
-            
             if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
+                targetElement.scrollIntoView({ behavior: 'smooth' });
             }
         });
     });
-document.addEventListener("DOMContentLoaded", function () {
-    // ... (Keep your theme and menu toggle code)
 
-    // --- Carousel Logic ---
-    const slider = document.getElementById("projects-slider");
-    const prevBtn = document.getElementById("prev-btn");
-    const nextBtn = document.getElementById("next-btn");
-
+    // --- 4. Carousel Logic (Show 2 Cards) ---
     if (slider && nextBtn && prevBtn) {
         const getScrollAmount = () => {
             const card = slider.querySelector(".project-card");
-            // Calculates card width + the gap
-            return card.offsetWidth + parseFloat(getComputedStyle(slider).gap);
+            const gap = 20; // Matches your updated CSS gap
+            return card.offsetWidth + gap;
         };
 
         nextBtn.addEventListener("click", () => {
@@ -90,10 +76,18 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // ... (Keep your form submission code)
-});
-    
-    // --- 4. Form Submission Simulation ---
+    // --- 5. Form Submission & Custom Toast ---
+    function showToast(message) {
+        if (!toast) return; // Guard clause if toast HTML is missing
+        const toastMsg = document.getElementById("toast-message");
+        toastMsg.innerText = message;
+        
+        toast.classList.add("show");
+        setTimeout(() => {
+            toast.classList.remove("show");
+        }, 4000);
+    }
+
     const forms = document.querySelectorAll("form");
     forms.forEach(form => {
         form.addEventListener("submit", (e) => {
@@ -106,7 +100,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Simulate server delay
             setTimeout(() => {
-                alert("Message sent successfully! Sunday will get back to you soon.");
+                // Replacement for alert()
+                showToast("Message sent successfully! Sunday will get back to you soon.");
+                
                 btn.innerText = originalText;
                 btn.disabled = false;
                 form.reset();
