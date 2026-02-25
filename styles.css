@@ -12,6 +12,10 @@
     --card-bg: #ffffff;
     --nav-text: #dddddd;
     --transition-speed: 0.3s;
+
+    /* Hero Background for Light Mode */
+    /* I added a semi-transparent white overlay to keep text readable */
+    --hero-bg: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('./Images/light-hero.png');
 }
 
 /* Theme Variables - Dark Mode */
@@ -21,6 +25,45 @@
     --text-muted: #bbbbbb;
     --section-alt: #1e1e1e;
     --card-bg: #252525;
+
+    /* Hero Background for Dark Mode */
+    --hero-bg: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('./Images/hero3.png');
+}
+
+/* --- Hero Section Update --- */
+.hero-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8%;
+    gap: 4rem;
+    
+    /* Use the variable here */
+    background: var(--hero-bg);
+    background-size: cover;
+    background-position: center;
+    
+    /* Smooth transition for background image swap */
+    transition: background var(--transition-speed), color var(--transition-speed);
+    color: var(--text-main); /* Hero text will now follow the theme color */
+}
+
+/* Keep the Hero Span Bright */
+.hero-content span { 
+    background: linear-gradient(90deg, #6b57ed, #fb9e2d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Update Hero Buttons for Light Mode Visibility */
+[data-theme="light"] .btn-secondary {
+    border: 2px solid var(--primary);
+    color: var(--primary);
+}
+[data-theme="light"] .btn-secondary:hover {
+    background: var(--primary);
+    color: #fff;
 }
 
 /* --- Base Styles --- */
