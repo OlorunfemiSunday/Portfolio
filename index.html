@@ -13,17 +13,24 @@
         <div class="logo-container">
             <span class="logo-text">Sunday.</span>
         </div>
+        
         <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
-        <ul class="nav-items">
+        
+        <ul class="nav-items" id="nav-menu">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
+
         <div class="social-icons">
-            <a href="https://wa.me/+2348100822888" class="icon"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://www.linkedin.com/in/olorunfemi-sunday" class="icon"><i class="fab fa-linkedin"></i></a>
-            <a href="https://x.com/bola_dev" class="icon"><i class="fab fa-twitter"></i></a>
+            <a href="https://wa.me/+2348100822888" class="icon" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.linkedin.com/in/olorunfemi-sunday" class="icon" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://x.com/bola_dev" class="icon" target="_blank"><i class="fab fa-twitter"></i></a>
+            
+            <button id="theme-btn" class="theme-toggle" aria-label="Toggle Dark Mode">
+                <i class="fas fa-moon"></i>
+            </button>
         </div>
     </nav>
 
@@ -33,7 +40,7 @@
             <p>I create visually compelling designs and functional web experiences that communicate ideas effectively.</p>
             <div class="hero-btns">
                 <a href="https://drive.google.com/file/d/1nW7oOQqe2Swe2k3wEKza1WnEX5W5qkAN/view?usp=drive_link" class="btn-primary" target="_blank">Download CV</a>
-                <a href="https://drive.google.com/file/d/1Mt_0hD47RvWZ4sMgjjmNx0_P6c3xTgP2/view?usp=sharing" class="btn-secondary">Design Portfolio</a>
+                <a href="https://drive.google.com/file/d/1Mt_0hD47RvWZ4sMgjjmNx0_P6c3xTgP2/view?usp=sharing" class="btn-secondary" target="_blank">Design Portfolio</a>
             </div>
         </div>
         <div class="hero-image">
@@ -72,19 +79,21 @@
         <h2 class="section-title">My Projects</h2>
         <div class="projects-container">
             <div class="project-card">
-                <img src="./Images/African Pot.png" alt="African Pot" />
+                <img src="./Images/African Pot.png" alt="African Pot Project" />
                 <div class="project-overlay">
-                    <a href="#" class="view-btn">View Project</a>
+                    <a href="#" class="view-btn" target="_blank">View Project</a>
                 </div>
             </div>
             <div class="project-card">
-                <img src="./Images/RetroRest.png" alt="Retrorest" />
+                <img src="./Images/RetroRest.png" alt="Retrorest Project" />
                 <div class="project-overlay">
-                    <a href="#" class="view-btn">View Project</a>
+                    <a href="#" class="view-btn" target="_blank">View Project</a>
                 </div>
             </div>
-            </div>
-        <a href="https://github.com/OlorunfemiSunday" class="btn-primary mt-20">See More on GitHub</a>
+        </div>
+        <div style="margin-top: 40px;">
+            <a href="https://github.com/OlorunfemiSunday" class="btn-primary" target="_blank">See More on GitHub</a>
+        </div>
     </section>
 
     <section class="contact-section" id="contact">
@@ -93,7 +102,7 @@
             <div class="form-container">
                 <div class="form-box">
                     <h3>Book an Appointment</h3>
-                    <form>
+                    <form id="appointment-form">
                         <input type="text" placeholder="Your Name" required>
                         <input type="email" placeholder="Your Email" required>
                         <div class="form-row">
@@ -105,7 +114,7 @@
                 </div>
                 <div class="form-box">
                     <h3>Send Feedback</h3>
-                    <form>
+                    <form id="feedback-form">
                         <input type="text" placeholder="Your Name" required>
                         <textarea rows="5" placeholder="Your Message" required></textarea>
                         <button type="submit" class="btn-primary">Send Message</button>
