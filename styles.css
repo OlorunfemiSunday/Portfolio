@@ -199,7 +199,7 @@ p { margin-bottom: 3rem; color: var(--text-muted); }
 /* --- About, Projects, Contact (The rest of your styles) --- */
 .about-me { padding: 10rem 10%; background: var(--section-alt); }
 .about-me-container { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-.about-me-image img { width: 100%; border-radius: 20px; box-shadow: 15px 15px 0 var(--primary); }
+.about-me-image img { width: 70%; border-radius: 20px; box-shadow: 15px 15px 0 var(--primary); }
 .section-title { font-size: 3.5rem; font-weight: 800; display: block; margin-bottom: 2.5rem; color: var(--primary); }
 
 .skill { margin-bottom: 2rem; }
