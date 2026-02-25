@@ -117,34 +117,48 @@ p { margin-bottom: 3rem; color: var(--text-muted); }
     filter: drop-shadow(0 20px 50px rgba(0,0,0,0.5));
 }
 
-/* Carousel Container */
+/* --- Projects Section & Carousel --- */
+.projects-section { 
+    padding: 10rem 5%; 
+    text-align: center; 
+    overflow: hidden; 
+}
+
 .carousel-wrapper {
     position: relative;
     display: flex;
     align-items: center;
     max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 50px;
+    margin: 4rem auto 0;
 }
 
 .projects-container {
-    display: flex; /* Change from grid to flex for sliding */
+    display: flex; /* Changed from grid to flex for horizontal layout */
     gap: 2.5rem;
-    overflow-x: hidden; /* Hide scrollbar */
+    overflow-x: hidden;
     scroll-behavior: smooth;
-    padding: 2rem 0;
+    padding: 1rem 0;
     width: 100%;
 }
 
 .project-card {
-    min-width: calc(33.333% - 2rem); /* Shows 3 cards at a time */
+    min-width: calc(33.333% - 1.7rem); /* 3 cards on desktop */
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    aspect-ratio: 16/9;
+    background: var(--card-bg);
     flex-shrink: 0;
-    transition: transform 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-/* Carousel Buttons */
+.project-card img { width: 100%; height: 100%; object-fit: cover; }
+
+/* --- Carousel Navigation --- */
 .carousel-btn {
     position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     background: var(--primary);
     color: white;
     border: none;
@@ -153,25 +167,17 @@ p { margin-bottom: 3rem; color: var(--text-muted); }
     border-radius: 50%;
     cursor: pointer;
     z-index: 10;
-    transition: 0.3s;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: 0.3s;
 }
 
-.carousel-btn:hover { background: var(--secondary); transform: scale(1.1); }
-.carousel-btn.prev { left: 0; }
-.carousel-btn.next { right: 0; }
+.carousel-btn:hover { background: var(--secondary); transform: translateY(-50%) scale(1.1); }
+.carousel-btn.prev { left: -20px; }
+.carousel-btn.next { right: -20px; }
 
-/* Responsive Carousel */
-@media (max-width: 992px) {
-    .project-card { min-width: calc(50% - 1.5rem); } /* 2 cards */
-}
-@media (max-width: 600px) {
-    .project-card { min-width: 100%; } /* 1 card */
-    .carousel-wrapper { padding: 0 40px; }
-}
 
 /* --- Buttons --- */
 .btn-primary, .btn-secondary {
@@ -216,6 +222,20 @@ p { margin-bottom: 3rem; color: var(--text-muted); }
 .form-box input, .form-box textarea { width: 100%; padding: 1.2rem; margin-bottom: 1.5rem; background: var(--section-alt); border: 1px solid rgba(0,0,0,0.1); color: var(--text-main); border-radius: 5px; }
 
 .footer { padding: 4rem; background: #111; color: #888; text-align: center; }
+
+/* --- Updated Media Queries --- */
+@media (max-width: 1024px) {
+    .project-card { min-width: calc(50% - 1.25rem); } /* 2 cards */
+    .carousel-btn.prev { left: 0; }
+    .carousel-btn.next { right: 0; }
+}
+
+@media (max-width: 650px) {
+    .project-card { min-width: 90%; } /* 1 card mostly visible */
+    .projects-container { gap: 1.5rem; }
+    .carousel-wrapper { padding: 0 10px; }
+    .carousel-btn { width: 35px; height: 35px; }
+}
 
 /* --- Responsive --- */
 @media (max-width: 768px) {
