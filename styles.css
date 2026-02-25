@@ -132,25 +132,45 @@ p { margin-bottom: 3rem; color: var(--text-muted); }
     margin: 4rem auto 0;
 }
 
+/* --- Updated Carousel Container --- */
 .projects-container {
-    display: flex; /* Changed from grid to flex for horizontal layout */
-    gap: 2.5rem;
-    overflow-x: hidden;
+    display: flex;
+    /* This gap must match the logic in JS */
+    gap: 20px; 
+    overflow-x: hidden; /* Keeps extra cards hidden */
     scroll-behavior: smooth;
-    padding: 1rem 0;
+    padding: 2rem 0;
     width: 100%;
+    /* Ensures items stay on one line */
+    flex-wrap: nowrap; 
 }
 
+/* --- Updated Project Card --- */
 .project-card {
-    min-width: calc(33.333% - 1.7rem); /* 3 cards on desktop */
+    /* (100% / 2 cards) - (gap / 2) = Exactly 2 cards visible */
+    min-width: calc(50% - 10px); 
+    flex-shrink: 0;
     position: relative;
     border-radius: 15px;
     overflow: hidden;
     aspect-ratio: 16/9;
     background: var(--card-bg);
-    flex-shrink: 0;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
 }
+
+/* Ensure buttons are visible over the cards if they overlap */
+.carousel-btn {
+    z-index: 20;
+}
+
+/* Mobile: Show only 1 card at a time */
+@media (max-width: 768px) {
+    .project-card {
+        min-width: 100%;
+    }
+}
+
+ 
 
 .project-card img { width: 100%; height: 100%; object-fit: cover; }
 
