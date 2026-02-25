@@ -66,7 +66,24 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
+// --- Carousel Logic ---
+    const slider = document.getElementById("projects-slider");
+    const prevBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
 
+    if (slider) {
+        nextBtn.addEventListener("click", () => {
+            // Scrolls by the width of one card
+            const cardWidth = slider.querySelector(".project-card").offsetWidth + 40; 
+            slider.scrollLeft += cardWidth;
+        });
+
+        prevBtn.addEventListener("click", () => {
+            const cardWidth = slider.querySelector(".project-card").offsetWidth + 40;
+            slider.scrollLeft -= cardWidth;
+        });
+    }
+    
     // --- 4. Form Submission Simulation ---
     const forms = document.querySelectorAll("form");
     forms.forEach(form => {
