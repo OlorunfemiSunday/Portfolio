@@ -1,285 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sunday Olorunfemi</title>
-    <link rel="stylesheet" href="./styles.css" />
+    <title>Sunday Olorunfemi | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-  </head>
-  <body>
-    <!--nav bar-->
     <nav class="navbar">
-        <!-- Logo on the left -->
-        <!-- <div class="logo-container">
-          <img src="./Images/logo2.png" alt="Logo" class="logo" />
+        <div class="logo-container">
+            <span class="logo-text">Sunday.</span>
         </div>
-   -->
-        <!-- Hamburger icon for mobile -->
-        <div class="hamburger" id="hamburger">&#9776;</div>
-  
-        <!-- Navigation items in the middle -->
+        <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
         <ul class="nav-items">
-            <li><a href="#">Home</a></li>
+            <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
-          </ul>
-  
-        <!-- Buttons on the far right -->
-        <div class="social-icons">
-            <a href="https://www.facebook.com/profile.php?id=100094448376294" class="icon">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://wa.me/+2348100822888" class="icon"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://www.instagram.com/maouz_koncept?igsh=MXh3MnowZnU5eTVqZw==" class="icon"><i class="fab fa-instagram"></i></a>
-            <a href="https://x.com/bola_dev?s=21" class="icon"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.linkedin.com/in/olorunfemi-sunday" class="icon"><i class="fab fa-linkedin"></i></a>
-          </div>
-      </nav>
-    <!-- <nav class="navbar">
-        <div class="logo-container">
-          <img src="./Images/logo2.png" alt="Logo" class="logo" />
-        </div>
-        <button class="hamburger" aria-label="Toggle navigation">
-          <i class="fas fa-bars"></i>
-        </button>
-        <ul class="nav-items">
-          <li><a href="#">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
         </ul>
         <div class="social-icons">
-          <a href="https://www.facebook.com/profile.php?id=100094448376294" class="icon">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <a href="https://wa.me/+2348100822888" class="icon"><i class="fab fa-whatsapp"></i></a>
-          <a href="https://www.instagram.com/maouz_koncept?igsh=MXh3MnowZnU5eTVqZw==" class="icon"><i class="fab fa-instagram"></i></a>
-          <a href="https://x.com/maouzconcept/status/1713280643142926549?s=46" class="icon"><i class="fab fa-twitter"></i></a>
-          <a href="https://www.linkedin.com/in/olorunfemi-sunday" class="icon"><i class="fab fa-linkedin"></i></a>
+            <a href="https://wa.me/+2348100822888" class="icon"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.linkedin.com/in/olorunfemi-sunday" class="icon"><i class="fab fa-linkedin"></i></a>
+            <a href="https://x.com/bola_dev" class="icon"><i class="fab fa-twitter"></i></a>
         </div>
-      </nav>
-       -->
-      
+    </nav>
 
-    <!--hero Section-->
     <section class="hero-section" id="home">
-      <div class="hero-image">
-        <img src="./Images/bap2.png" alt="Hero Image" />
-      </div>
-      <div class="hero-content">
-        <h1>
-          Hi! I am <br />
-          <span> Olorunfemi</span>
-        </h1>
-        <p>I create visually compelling designs <br> that communicate ideas</p>
-        <a
-          href="https://drive.google.com/file/d/13K12zJmSR0ZcYFh-w_-56_2g1mCoFO7b/view?usp=sharing"
-        ></a>
-        <a
-        
-          href="https://drive.google.com/file/d/1Wbfq14REhF-LLLcE8t00aeQasFxksEcB/view?usp=sharing"
-          target="_blank"
-        >
-          <button class="hero-button"></button
-        ></a>
-      </div>
+        <div class="hero-content">
+            <h1>Hi! I am <br /><span>Olorunfemi</span></h1>
+            <p>I create visually compelling designs and functional web experiences that communicate ideas effectively.</p>
+            <div class="hero-btns">
+                <a href="YOUR_CV_LINK" class="btn-primary" target="_blank">Download CV</a>
+                <a href="#projects" class="btn-secondary">View My Work</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="./Images/bap2.png" alt="Olorunfemi Portrait" />
+        </div>
     </section>
 
-    <!--about me-->
     <section class="about-me" id="about">
-      <div class="about-me-container">
-        <div class="about-me-text">
-          <span>About Me</span>
-          <p>
-            I am a young graphic designer and passionate about creating visually
-            stunning designs that help brands grow. With more than 7 years of
-            experience in the design industry, I think I could be a great asset
-            to you as a Graphic Designer and web developer. I have experience as
-            a freelance and in-house graphic designer, and I have worked on a
-            range of print, interactive and digital design projects.
-          </p>
-          <p>
-            Currently, I am the Graphic Designer at Bridgecard, where I design
-            all communication materials and advertising campaigns. Our most
-            recent campaign, which I worked with in conjunction with the
-            marketing team, increased our sales by 20% since launch.
-          </p>
-
-          <!-- Skills Container placed directly beneath the paragraph -->
-          <div class="skills-container">
-            <div class="skill">
-              <label></label>
-              <div class="skill-bar js-skill">
-                <div class="skill-level" style="width: 50%">Adobe Packages</div>
-              </div>
+        <div class="about-me-container">
+            <div class="about-me-image">
+                <img src="./Images/_AST3992.jpg" alt="About Me" />
             </div>
-            <div class="skill">
-              <label></label>
-              <div class="skill-bar html-skill">
-                <div class="skill-level" style="width: 95%">CorelDraw</div>
-              </div>
+            <div class="about-me-text">
+                <span class="section-title">About Me</span>
+                <p>I am a graphic designer and frontend developer with 7+ years of experience. Currently at Bridgecard, I blend creative design with technical implementation to drive business growth.</p>
+                
+                <div class="skills-container">
+                    <div class="skill">
+                        <div class="skill-info"><span>Adobe Creative Suite</span><span>85%</span></div>
+                        <div class="skill-bar"><div class="skill-level" style="width: 85%"></div></div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-info"><span>CorelDraw</span><span>95%</span></div>
+                        <div class="skill-bar"><div class="skill-level" style="width: 95%"></div></div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-info"><span>Frontend Dev (HTML/CSS/JS)</span><span>75%</span></div>
+                        <div class="skill-bar"><div class="skill-level" style="width: 75%"></div></div>
+                    </div>
+                </div>
             </div>
-            <div class="skill">
-              <label></label>
-              <div class="skill-bar css-skill">
-                <div class="skill-level" style="width: 50%">Frontend Dev</div>
-              </div>
-            </div>
-            <a
-          href="https://drive.google.com/file/d/1vc4RllGad9SCggEBDQF5vlgueROEi_on/view"
-          target="_blank"
-        >
-          <button class="hero-button"></button
-        ></a>
-          </div>
         </div>
-
-        <div class="about-me-image">
-          <img src="./Images/_AST3992.jpg" alt="Frontend Developer Image" />
-        </div>
-      </div>
-      
     </section>
 
-    <!--project section-->
     <section class="projects-section" id="projects">
-      <span>My Projects</span>
-      <div class="projects-container">
-        <div class="project-card">
-          <a href="https://olorunfemisunday.github.io/African-Pot/">
-            <img src="./Images/African Pot.png" alt="African Pot" />
-          </a>
-        </div>
-        <div class="project-card">
-          <a href="https://olorunfemisunday.github.io/Retrorest/">
-            <img src="./Images/RetroRest.png" alt="Retrorest" />
-          </a>
-        </div>
-        <div class="project-card">
-          <a href="https://olorunfemisunday.github.io/AgroRentas/">
-            <img src="./Images/AgroRenta.png" alt="AgroRentas" />
-          </a>
-        </div>
-        <div class="project-card">
-          <a
-            href="https://olorunfemisunday.github.io/Modal-Carousel-and-Accordion-Project-/"
-          >
-            <img src="./Images/whatJS.png" alt="School" />
-          </a>
-        </div>
-        <div class="project-card">
-          <a href="https://olorunfemisunday.github.io/JS-Slideshow/">
-            <img src="./Images/Slideshow.png" alt="Project 5" />
-          </a>
-        </div>
-        <div class="project-card">
-          <a href="https://olorunfemisunday.github.io/Ayalegbe-Project/">
-            <img src="./Images/Ayalegbe.png" alt="Ayalegbe" />
-          </a>
-        </div>
-        <div class="project-card">
-          <a href="https://olorunfemisunday.github.io/To-Do-Project/">
-            <img src="./Images/ToDO.png" alt="ToDO" />
-          </a>
-        </div>
-        <div class="project-card">
-          <a href="https://github.com/OlorunfemiSunday">
-            <img src="./Images/Telemedicine.png" alt="Medichat" />
-          </a>
-        </div>
-      </div>
-      <a href="https://github.com/OlorunfemiSunday">
-        <button class="take"></button
-      ></a>
+        <h2 class="section-title">My Projects</h2>
+        <div class="projects-container">
+            <div class="project-card">
+                <img src="./Images/African Pot.png" alt="African Pot" />
+                <div class="project-overlay">
+                    <a href="#" class="view-btn">View Project</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="./Images/RetroRest.png" alt="Retrorest" />
+                <div class="project-overlay">
+                    <a href="#" class="view-btn">View Project</a>
+                </div>
+            </div>
+            </div>
+        <a href="https://github.com/OlorunfemiSunday" class="btn-primary mt-20">See More on GitHub</a>
     </section>
-<!-- form -->
-    <section class="appointment-feedback-section" id="contact">
+
+    <section class="contact-section" id="contact">
         <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
             <div class="form-container">
-                <!-- Appointment Booking Form -->
                 <div class="form-box">
-                    <h2>Book an Appointment</h2>
-                    <form action="#" method="post">
-                        <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" required>
-
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
-
-                        <label for="date">Preferred Date:</label>
-                        <input type="date" id="date" name="date" required>
-
-                        <label for="time">Preferred Time:</label>
-                        <input type="time" id="time" name="time" required>
-
-                        <button type="submit">Book Appointment</button>
+                    <h3>Book an Appointment</h3>
+                    <form>
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <div class="form-row">
+                            <input type="date" required>
+                            <input type="time" required>
+                        </div>
+                        <button type="submit" class="btn-primary">Schedule Now</button>
                     </form>
                 </div>
-
-                <!-- Feedback Form -->
                 <div class="form-box">
-                    <h2>Send Feedback</h2>
-                    <form action="#" method="post">
-                        <label for="name-feedback">Name:</label>
-                        <input type="text" id="name-feedback" name="name-feedback" required>
-
-                        <label for="email-feedback">Email:</label>
-                        <input type="email" id="email-feedback" name="email-feedback" required>
-
-                        <label for="message">Your Feedback:</label>
-                        <textarea id="message" name="message" rows="4" required></textarea>
-
-                        <button type="submit">Send Feedback</button>
+                    <h3>Send Feedback</h3>
+                    <form>
+                        <input type="text" placeholder="Your Name" required>
+                        <textarea rows="5" placeholder="Your Message" required></textarea>
+                        <button type="submit" class="btn-primary">Send Message</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!--footer-->
     <footer class="footer">
         <div class="footer-container">
-          <!-- Image Section -->
-          <div class="footer-image">
-            <img src="./Images/logo.png" alt="Footer Image" />
-          </div>
-  
-          <!-- Navigation Links -->
-          <nav class="footer-nav">
-            <ul>
-              <li><a href="#home">Home</a></li>
-              <li><a href="#contact">Contact</a></li>
-              <li><a href="#about">About Me</a></li>
-              <li><a href="#projects">Projects</a></li>
-            </ul>
-          </nav>
-  
-          <!-- About Us Section -->
-          <div class="footer-about">
-            <h2>Thank you!</h2>
-            <p>
-            I believe in the power of teamwork and collaboration, and I enjoy working closely with designers, developers, and project managers to deliver top-notch results. 
-                My goal is to continue growing my skills while contributing to meaningful and impactful projects that improve user experiences.
-               
-            </p>
-          </div>
-  
-            
-        <!-- Copyright -->
-        <p class="footer-copyright">
-          &copy; 2024 Olorunfemi Sunday. All Rights Reserved.
-        </p>
-      </footer>
-      <script src="app.js"></script>
+            <div class="footer-about">
+                <h3>Thank You!</h3>
+                <p>Let's collaborate on your next big project.</p>
+            </div>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                </ul>
+            </nav>
+        </div>
+        <p class="footer-copyright">&copy; 2026 Olorunfemi Sunday. All Rights Reserved.</p>
+    </footer>
 
-  </body>
+    <script src="app.js"></script>
+</body>
 </html>
