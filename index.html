@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sunday Olorunfemi | Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -14,7 +15,9 @@
             <span class="logo-text">Sunday.</span>
         </div>
         
-        <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+        <div class="hamburger" id="hamburger" aria-label="Menu">
+            <i class="fas fa-bars"></i>
+        </div>
         
         <ul class="nav-items" id="nav-menu">
             <li><a href="#home">Home</a></li>
@@ -24,10 +27,10 @@
         </ul>
 
         <div class="social-icons">
-            <a href="https://wa.me/+2348100822888" class="icon" target="_blank"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://www.linkedin.com/in/sunday-olorunfemi-8762aa3b0/" class="icon" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://x.com/bola_dev" class="icon" target="_blank"><i class="fab fa-twitter"></i></a>
-             <a href="https://www.instagram.com/maouz_koncept/" class="icon" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/+2348100822888" class="icon" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.linkedin.com/in/sunday-olorunfemi-8762aa3b0/" class="icon" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+            <a href="https://x.com/bola_dev" class="icon" target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/maouz_koncept/" class="icon" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
             
             <button id="theme-btn" class="theme-toggle" aria-label="Toggle Dark Mode">
                 <i class="fas fa-moon"></i>
@@ -35,41 +38,43 @@
         </div>
     </nav>
 
-    <section class="hero-section" id="home">
+    <header class="hero-section" id="home">
         <div class="hero-content">
             <h1>Hi! I am <br /><span>Olorunfemi</span></h1>
             <p>I create visually compelling designs and functional web experiences that communicate ideas effectively.</p>
             <div class="hero-btns">
-                <a href="https://drive.google.com/file/d/1nW7oOQqe2Swe2k3wEKza1WnEX5W5qkAN/view?usp=drive_link" class="btn-primary" target="_blank">Download CV</a>
-                <a href="https://drive.google.com/file/d/1Mt_0hD47RvWZ4sMgjjmNx0_P6c3xTgP2/view?usp=sharing" class="btn-secondary" target="_blank">Design Portfolio</a>
+                <a href="https://drive.google.com/file/d/1nW7oOQqe2Swe2k3wEKza1WnEX5W5qkAN/view?usp=drive_link" class="btn-primary" target="_blank" rel="noopener">Download CV</a>
+                <a href="https://drive.google.com/file/d/1Mt_0hD47RvWZ4sMgjjmNx0_P6c3xTgP2/view?usp=sharing" class="btn-secondary" target="_blank" rel="noopener">Design Portfolio</a>
             </div>
         </div>
         <div class="hero-image">
             <img src="./Images/bap2.png" alt="Olorunfemi Portrait" />
         </div>
-    </section>
+    </header>
 
     <section class="about-me" id="about">
-        <div class="about-me-container">
-            <div class="about-me-image">
-                <img src="./Images/_AST3992.jpg" alt="About Me" />
-            </div>
-            <div class="about-me-text">
-                <span class="section-title">About Me</span>
-                <p>I am a graphic designer and frontend developer with 7+ years of experience. Currently at Bridgecard, I blend creative design with technical implementation to drive business growth.</p>
-                
-                <div class="skills-container">
-                    <div class="skill">
-                        <div class="skill-info"><span>Adobe Creative Suite</span><span>85%</span></div>
-                        <div class="skill-bar"><div class="skill-level" style="width: 85%"></div></div>
-                    </div>
-                    <div class="skill">
-                        <div class="skill-info"><span>CorelDraw</span><span>95%</span></div>
-                        <div class="skill-bar"><div class="skill-level" style="width: 95%"></div></div>
-                    </div>
-                    <div class="skill">
-                        <div class="skill-info"><span>Frontend Dev (HTML/CSS/JS)</span><span>75%</span></div>
-                        <div class="skill-bar"><div class="skill-level" style="width: 75%"></div></div>
+        <div class="container">
+            <div class="about-me-container">
+                <div class="about-me-image">
+                    <img src="./Images/_AST3992.jpg" alt="About Me Portrait" />
+                </div>
+                <div class="about-me-text">
+                    <h2 class="section-title">About Me</h2>
+                    <p>I am a graphic designer and frontend developer with 7+ years of experience. Currently at Bridgecard, I blend creative design with technical implementation to drive business growth.</p>
+                    
+                    <div class="skills-container">
+                        <div class="skill">
+                            <div class="skill-info"><span>Adobe Creative Suite</span><span>85%</span></div>
+                            <div class="skill-bar"><div class="skill-level" style="width: 85%"></div></div>
+                        </div>
+                        <div class="skill">
+                            <div class="skill-info"><span>CorelDraw</span><span>95%</span></div>
+                            <div class="skill-bar"><div class="skill-level" style="width: 95%"></div></div>
+                        </div>
+                        <div class="skill">
+                            <div class="skill-info"><span>Frontend Dev</span><span>75%</span></div>
+                            <div class="skill-bar"><div class="skill-level" style="width: 75%"></div></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -77,91 +82,96 @@
     </section>
 
     <section class="projects-section" id="projects">
-    <h2 class="section-title">My Projects</h2>
-    
-    <div class="carousel-wrapper">
-        <button class="carousel-btn prev" id="prev-btn" aria-label="Previous Project">
-            <i class="fas fa-chevron-left"></i>
-        </button>
+        <h2 class="section-title">My Projects</h2>
         
-        <div class="projects-container" id="projects-slider">
-            <div class="project-card">
-                <img src="./Images/African Pot.png" alt="African Pot Project" />
-                <div class="project-overlay">
-                    <a href="https://african-pot.onrender.com" class="view-btn" target="_blank">View Project</a>
+        <div class="carousel-wrapper">
+            <button class="carousel-btn prev" id="prev-btn" aria-label="Previous Project">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <div class="projects-container" id="projects-slider">
+                <div class="project-card">
+                    <img src="./Images/African Pot.png" alt="African Pot Project" />
+                    <div class="project-overlay">
+                        <a href="https://african-pot.onrender.com" class="view-btn" target="_blank" rel="noopener">View Project</a>
+                    </div>
                 </div>
-            </div>
-            <div class="project-card">
-                <img src="./Images/RetroRest.png" alt="Retrorest Project" />
-                <div class="project-overlay">
-                    <a href="https://retrorest.onrender.com" class="view-btn" target="_blank">View Project</a>
+                <div class="project-card">
+                    <img src="./Images/RetroRest.png" alt="Retrorest Project" />
+                    <div class="project-overlay">
+                        <a href="https://retrorest.onrender.com" class="view-btn" target="_blank" rel="noopener">View Project</a>
+                    </div>
                 </div>
-            </div>
-            <div class="project-card">
-                <img src="./Images/Ayalegbe.png" alt="Ayalegbe Project" />
-                <div class="project-overlay">
-                    <a href="https://ayalegbe-project-6p8v.onrender.com" class="view-btn" target="_blank">View Project</a>
+                <div class="project-card">
+                    <img src="./Images/Ayalegbe.png" alt="Ayalegbe Project" />
+                    <div class="project-overlay">
+                        <a href="https://ayalegbe-project-6p8v.onrender.com" class="view-btn" target="_blank" rel="noopener">View Project</a>
+                    </div>
                 </div>
-            </div>
-            <div class="project-card">
-                <img src="./Images/Telemedicine.png" alt="Telemedicine Project" />
-                <div class="project-overlay">
-                    <a href="https://medichats.onrender.com/index.html" class="view-btn" target="_blank">View Project</a>
+                <div class="project-card">
+                    <img src="./Images/Telemedicine.png" alt="Telemedicine Project" />
+                    <div class="project-overlay">
+                        <a href="https://medichats.onrender.com/index.html" class="view-btn" target="_blank" rel="noopener">View Project</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="./Images/AgroRenta.png" alt="AgroRenta Project" />
+                    <div class="project-overlay">
+                        <a href="https://agrorentas.onrender.com" class="view-btn" target="_blank" rel="noopener">View Project</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="./Images/Vephla.png" alt="Vephla Project" />
+                    <div class="project-overlay">
+                        <a href="https://vephla.onrender.com" class="view-btn" target="_blank" rel="noopener">View Project</a>
+                    </div>
                 </div>
             </div>
 
-             <div class="project-card">
-                <img src="./Images/AgroRenta.png" alt="AgroRenta Project" />
-                <div class="project-overlay">
-                    <a href="https://agrorentas.onrender.com" class="view-btn" target="_blank">View Project</a>
-                </div>
-            </div>
+            <button class="carousel-btn next" id="next-btn" aria-label="Next Project">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
 
-            <div class="project-card">
-                <img src="./Images/Vephla.png" alt="Vephla Project" />
-                <div class="project-overlay">
-                    <a href="https://vephla.onrender.com" class="view-btn" target="_blank">View Project</a>
+        <div style="margin-top: 40px;">
+            <a href="https://github.com/OlorunfemiSunday" class="btn-primary" target="_blank" rel="noopener">See More on GitHub</a>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="form-container">
+                <div class="form-box">
+                    <h3>Book an Appointment</h3>
+                    <form id="appointment-form">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <div class="form-row">
+                            <input type="date" required aria-label="Date">
+                            <input type="time" required aria-label="Time">
+                        </div>
+                        <button type="submit" class="btn-primary">Schedule Now</button>
+                    </form>
+                </div>
+                <div class="form-box">
+                    <h3>Send Feedback</h3>
+                    <form id="feedback-form">
+                        <input type="text" placeholder="Your Name" required>
+                        <textarea rows="5" placeholder="Your Message" required></textarea>
+                        <button type="submit" class="btn-primary">Send Message</button>
+                    </form>
                 </div>
             </div>
         </div>
+    </section>
 
-        <button class="carousel-btn next" id="next-btn" aria-label="Next Project">
-            <i class="fas fa-chevron-right"></i>
-        </button>
+    <div id="custom-toast" class="toast-container">
+        <div class="toast-content">
+            <i class="fas fa-check-circle"></i>
+            <span id="toast-message"></span>
+        </div>
     </div>
-
-    <div style="margin-top: 40px;">
-        <a href="https://github.com/OlorunfemiSunday" class="btn-primary" target="_blank">See More on GitHub</a>
-    </div>
-</section>
-
-<section class="contact-section" id="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="form-container">
-                <div class="form-box">
-                    <h3>Book an Appointment</h3>
-                    <form id="appointment-form">
-                        <input type="text" placeholder="Your Name" required>
-                        <input type="email" placeholder="Your Email" required>
-                        <div class="form-row">
-                            <input type="date" required>
-                            <input type="time" required>
-                        </div>
-                        <button type="submit" class="btn-primary">Schedule Now</button>
-                    </form>
-                </div>
-                <div class="form-box">
-                    <h3>Send Feedback</h3>
-                    <form id="feedback-form">
-                        <input type="text" placeholder="Your Name" required>
-                        <textarea rows="5" placeholder="Your Message" required></textarea>
-                        <button type="submit" class="btn-primary">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
     
     <footer class="footer">
         <div class="footer-container">
