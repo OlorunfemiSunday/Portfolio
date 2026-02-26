@@ -114,65 +114,69 @@ p { margin-bottom: 3rem; color: var(--text-muted); }
     filter: drop-shadow(0 20px 50px rgba(0,0,0,0.5));
 }
 
-/* --- 5. Projects & Carousel (FIXED) --- */
 .projects-section { 
-    padding: 10rem 5%; 
+    padding: 6rem 5%; 
     text-align: center; 
     overflow: hidden;
 }
 
 .carousel-wrapper {
     position: relative;
-    max-width: 1200px;
-    margin: 4rem auto 0;
+    max-width: 1100px;
+    margin: 3rem auto 0;
     display: flex;
     align-items: center;
 }
 
 .projects-container {
     display: flex;
-    gap: 20px; 
-    overflow-x: hidden; 
+    gap: 20px;
+    overflow: hidden;
     scroll-behavior: smooth;
-    padding: 2rem 0;
+    padding: 1rem 0;
     width: 100%;
-    flex-wrap: nowrap; /* Keeps cards in a line */
 }
 
 .project-card {
-    min-width: calc(50% - 10px); 
+    min-width: 300px;          /* 🔥 Fixed size */
+    height: 200px;             /* 🔥 Smaller height */
     flex-shrink: 0;
     position: relative;
     border-radius: 15px;
     overflow: hidden;
-    aspect-ratio: 16/9;
     background: var(--card-bg);
     border: 1px solid var(--section-alt);
     transition: transform 0.3s ease;
 }
 
-.project-card img { width:10%; height: 10%; object-fit: cover; display: block; }
+.project-card img {
+    width: 100%;               /* 🔥 Fill card */
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
 
 .project-overlay {
     position: absolute;
-    top: 0; left: 0;
-    width: 30%; height: 30%;
+    inset: 0;                  /* 🔥 Covers full card */
     background: rgba(107, 87, 237, 0.9);
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
-    transition: 0.4s;
+    transition: 0.4s ease;
 }
 
-.project-card:hover .project-overlay { opacity: 1; }
+.project-card:hover .project-overlay { 
+    opacity: 1; 
+}
 
 .view-btn { 
-    padding: 1rem 2rem; 
+    padding: 0.7rem 1.5rem; 
     background: #fff; 
     color: var(--primary); 
     text-decoration: none; 
-    border-radius: 5px; 
+    border-radius: 6px; 
     font-weight: bold; 
 }
 
@@ -183,22 +187,23 @@ p { margin-bottom: 3rem; color: var(--text-muted); }
     background: var(--primary);
     color: white;
     border: none;
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     cursor: pointer;
     z-index: 20;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     transition: 0.3s;
 }
 
-.carousel-btn:hover { background: var(--secondary); transform: translateY(-50%) scale(1.1); }
-.carousel-btn.prev { left: -25px; }
-.carousel-btn.next { right: -25px; }
+.carousel-btn:hover { 
+    transform: translateY(-50%) scale(1.1); 
+}
 
+.carousel-btn.prev { left: -20px; }
+.carousel-btn.next { right: -20px; } 
 /* --- 6. About Me --- */
 .about-me { padding: 10rem 10%; background: var(--section-alt); }
 .about-me-container { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
