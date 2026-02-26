@@ -1,271 +1,167 @@
+/* --- Modern Variable System --- */
 :root {
-    /* Brand Colors */
     --primary: #6b57ed;
+    --primary-glow: rgba(107, 87, 237, 0.3);
     --secondary: #fb9e2d;
-    --glass: rgba(255, 255, 255, 0.1);
+    --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     
-    /* Theme Variables - Light Mode (Default) */
+    /* Light Mode */
     --bg-color: #ffffff;
     --text-main: #1a1a1a;
-    --text-muted: #555555;
-    --section-alt: #f4f4f4;
+    --text-muted: #666666;
+    --section-alt: #f8f9fa;
     --card-bg: #ffffff;
-    --nav-text: #dddddd;
-    --transition-speed: 0.3s;
-
-    /* Hero Background for Light Mode */
-    --hero-bg: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url('./Images/light-hero.png');
+    --border: rgba(0, 0, 0, 0.08);
+    --hero-bg: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('./Images/light-hero.png');
 }
 
-/* Theme Variables - Dark Mode */
 [data-theme="dark"] {
-    --bg-color: #121212;
+    --bg-color: #0f0f12;
     --text-main: #f4f4f4;
-    --text-muted: #bbbbbb;
-    --section-alt: #1e1e1e;
-    --card-bg: #252525;
-
-    /* Hero Background for Dark Mode */
-    --hero-bg: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('./Images/hero3.png');
+    --text-muted: #a0a0a0;
+    --section-alt: #16161a;
+    --card-bg: #1c1c21;
+    --border: rgba(255, 255, 255, 0.1);
+    --hero-bg: radial-gradient(circle at top right, rgba(107, 87, 237, 0.15), transparent), 
+               linear-gradient(rgba(15, 15, 18, 0.85), rgba(15, 15, 18, 0.85)), url('./Images/hero3.png');
 }
 
-/* --- Base Styles --- */
+/* --- Global Resets --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { font-size: 60.5%; scroll-behavior: smooth; }
+html { font-size: 62.5%; scroll-behavior: smooth; }
 
 body {
-    font-family: 'Inter', Roboto, sans-serif;
-    line-height: 1.6;
+    font-family: 'Inter', system-ui, sans-serif;
     background-color: var(--bg-color);
     color: var(--text-main);
-    font-size: 1.5rem;
-    transition: background-color var(--transition-speed), color var(--transition-speed);
+    font-size: 1.6rem;
+    transition: background-color var(--transition), color var(--transition);
 }
 
-p { margin-bottom: 3rem; color: var(--text-muted); }
-
-/* --- Navigation --- */
+/* --- Premium Navigation --- */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 4rem;
-    background: rgba(26, 26, 26, 0.85);
-    backdrop-filter: blur(15px);
+    padding: 1.2rem 3rem;
+    background: rgba(26, 26, 26, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     position: fixed;
-    width: 90%;
-    max-width: 1000px;
+    width: 95%;
+    max-width: 1100px;
     left: 50%;
-    top: 30px;
+    top: 20px;
     transform: translateX(-50%);
     border-radius: 100px;
     z-index: 1000;
     border: 1px solid rgba(255,255,255,0.1);
 }
 
-.logo-text { font-size: 2rem; font-weight: 800; color: #fff; }
-.nav-items { display: flex; list-style: none; gap: 2rem; align-items: center; }
-.nav-items a { color: var(--nav-text); text-decoration: none; font-weight: 500; transition: 0.3s; }
-.nav-items a:hover { color: var(--secondary); }
-
-#theme-btn {
-    background: none;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    font-size: 1.8rem;
-    padding: 0.5rem;
-    transition: transform 0.2s;
-}
-
-.social-icons { display: flex; gap: 1.5rem; align-items: center; }
-.social-icons i { color: #fff; font-size: 1.8rem; }
-.hamburger { display: none; color: #fff; font-size: 2.4rem; cursor: pointer; }
-
-/* --- Hero Section (FIXED) --- */
+/* --- Dynamic Hero Section --- */
 .hero-section {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 8%;
-    gap: 4rem;
-    
-    /* This variable now controls the image swap */
-    background: var(--hero-bg); 
+    padding: 120px 8% 60px;
+    background: var(--hero-bg);
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Optional: adds a parallax feel */
-    
-    color: var(--text-main);
-    transition: background var(--transition-speed), color var(--transition-speed);
+    background-attachment: fixed;
 }
 
-.hero-content { flex: 1; z-index: 2; }
-.hero-content h1 { font-size: 6rem; line-height: 1.1; margin-bottom: 2rem; }
-.hero-content span { 
-    background: linear-gradient(90deg, #6b57ed, #fb9e2d);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.hero-content h1 {
+    font-size: clamp(4rem, 8vw, 7rem);
+    font-weight: 800;
+    letter-spacing: -2px;
 }
 
-.hero-image { flex: 1; display: flex; justify-content: center; }
-.hero-image img {
-    max-height: 80vh;
-    max-width: 100%;
-    object-fit: contain;
-    filter: drop-shadow(0 20px 50px rgba(0,0,0,0.5));
-}
-
-/* --- Projects Section & Carousel --- */
-.projects-section { 
-    padding: 10rem 5%; 
-    text-align: center; 
-    overflow: hidden; 
-}
+/* --- Optimized Carousel Container --- */
+.projects-section { padding: 10rem 5%; }
 
 .carousel-wrapper {
     position: relative;
-    display: flex;
-    align-items: center;
     max-width: 1200px;
-    margin: 4rem auto 0;
+    margin: 0 auto;
+    padding: 20px 0;
 }
 
-/* --- Updated Carousel Container --- */
 .projects-container {
     display: flex;
-    /* This gap must match the logic in JS */
-    gap: 20px; 
-    overflow-x: hidden; /* Keeps extra cards hidden */
-    scroll-behavior: smooth;
-    padding: 2rem 0;
-    width: 100%;
-    /* Ensures items stay on one line */
-    flex-wrap: nowrap; 
+    gap: 25px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; /* Hide for Firefox */
+    padding: 20px 5px;
 }
 
-/* --- Updated Project Card --- */
+.projects-container::-webkit-scrollbar { display: none; } /* Hide for Chrome */
+
 .project-card {
-    /* (100% / 2 cards) - (gap / 2) = Exactly 2 cards visible */
-    min-width: calc(50% - 10px); 
-    flex-shrink: 0;
-    position: relative;
-    border-radius: 15px;
-    overflow: hidden;
-    aspect-ratio: 16/9;
+    min-width: calc(50% - 12.5px);
+    scroll-snap-align: start;
+    border-radius: 24px;
     background: var(--card-bg);
-    transition: transform 0.3s ease;
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: var(--transition);
 }
 
-/* Ensure buttons are visible over the cards if they overlap */
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px var(--primary-glow);
+    border-color: var(--primary);
+}
+
+/* --- Floating Carousel Buttons --- */
 .carousel-btn {
-    z-index: 20;
-}
-
-/* Mobile: Show only 1 card at a time */
-@media (max-width: 768px) {
-    .project-card {
-        min-width: 100%;
-    }
-}
-
- 
-
-.project-card img { width: 100%; height: 100%; object-fit: cover; }
-
-/* --- Carousel Navigation --- */
-.carousel-btn {
+    width: 50px;
+    height: 50px;
+    background: var(--bg-color);
+    color: var(--primary);
+    border: 1px solid var(--border);
+    border-radius: 50%;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: var(--primary);
-    color: white;
-    border: none;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
     cursor: pointer;
     z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     transition: 0.3s;
 }
 
-.carousel-btn:hover { background: var(--secondary); transform: translateY(-50%) scale(1.1); }
-.carousel-btn.prev { left: -20px; }
-.carousel-btn.next { right: -20px; }
-
-
-/* --- Buttons --- */
-.btn-primary, .btn-secondary {
-    padding: 1.2rem 3rem;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.3s;
-    display: inline-block;
-    cursor: pointer;
+.carousel-btn:hover {
+    background: var(--primary);
+    color: white;
 }
 
-.btn-primary { background: var(--primary); color: #fff; border: none; }
-.btn-secondary { border: 2px solid var(--primary); color: var(--text-main); }
-[data-theme="dark"] .btn-secondary { border: 2px solid #fff; color: #fff; }
+.carousel-btn.prev { left: -25px; }
+.carousel-btn.next { right: -25px; }
 
-.btn-secondary:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+/* --- About Me & Skills --- */
+.about-me { padding: 10rem 8%; background: var(--section-alt); }
 
-/* --- About, Projects, Contact (The rest of your styles) --- */
-.about-me { padding: 10rem 10%; background: var(--section-alt); }
-.about-me-container { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-.about-me-image img { width: 70%; border-radius: 20px; box-shadow: 15px 15px 0 var(--primary); }
-.section-title { font-size: 3.5rem; font-weight: 800; display: block; margin-bottom: 2.5rem; color: var(--primary); }
-
-.skill { margin-bottom: 2rem; }
-.skill-info { display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-weight: bold; }
-.skill-bar { height: 10px; background: rgba(0,0,0,0.1); border-radius: 10px; overflow: hidden; }
-[data-theme="dark"] .skill-bar { background: rgba(255,255,255,0.1); }
-.skill-level { height: 100%; background: var(--primary); transition: 1s ease-in-out; }
-
-.projects-section { padding: 10rem 10%; text-align: center; }
-.projects-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; margin-top: 4rem; }
-.project-card { position: relative; border-radius: 15px; overflow: hidden; aspect-ratio: 16/9; background: var(--card-bg); }
-.project-card img { width: 100%; height: 100%; object-fit: cover; }
-.project-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(107, 87, 237, 0.9); display: flex; align-items: center; justify-content: center; opacity: 0; transition: 0.4s; pointer-events: none; }
-.project-card:hover .project-overlay { opacity: 1; pointer-events: auto; }
-.view-btn { padding: 1rem 2rem; background: #fff; color: var(--primary); text-decoration: none; border-radius: 5px; font-weight: bold; }
-
-.contact-section { padding: 10rem 10%; background: var(--section-alt); }
-.form-container { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
-.form-box { background: var(--card-bg); padding: 3rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-.form-box input, .form-box textarea { width: 100%; padding: 1.2rem; margin-bottom: 1.5rem; background: var(--section-alt); border: 1px solid rgba(0,0,0,0.1); color: var(--text-main); border-radius: 5px; }
-
-.footer { padding: 4rem; background: #111; color: #888; text-align: center; }
-
-/* --- Updated Media Queries --- */
-@media (max-width: 1024px) {
-    .project-card { min-width: calc(50% - 1.25rem); } /* 2 cards */
-    .carousel-btn.prev { left: 0; }
-    .carousel-btn.next { right: 0; }
+.about-me-image img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 30px;
+    filter: grayscale(20%);
+    border: 1px solid var(--border);
 }
 
-@media (max-width: 650px) {
-    .project-card { min-width: 90%; } /* 1 card mostly visible */
-    .projects-container { gap: 1.5rem; }
-    .carousel-wrapper { padding: 0 10px; }
-    .carousel-btn { width: 35px; height: 35px; }
+.skill-bar {
+    height: 8px;
+    background: rgba(0,0,0,0.05);
+    border-radius: 10px;
 }
 
-/* --- Responsive --- */
-@media (max-width: 768px) {
-    .navbar { width: 95%; padding: 1rem 2rem; border-radius: 50px; top: 15px; }
-    .hamburger { display: block; order: 3; }
-    .nav-items { display: none; flex-direction: column; position: absolute; top: 70px; left: 0; width: 100%; background: rgba(26,26,26,0.98); padding: 2rem; border-radius: 20px; gap: 1.5rem; }
-    .nav-items.active { display: flex; }
-    .hero-section { flex-direction: column-reverse; text-align: center; padding-top: 120px; height: auto; padding-bottom: 5rem; }
-    .hero-content h1 { font-size: 4rem; }
-    .hero-image img { max-height: 40vh; margin-bottom: 2rem; }
-    .about-me-container, .form-container { grid-template-columns: 1fr; }
-    #theme-btn { order: 2; margin-left: auto; margin-right: 1.5rem; }
+[data-theme="dark"] .skill-bar { background: rgba(255,255,255,0.05); }
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 900px) {
+    .project-card { min-width: calc(100% - 0px); }
+    .carousel-btn { display: none; } /* Use touch scroll on mobile */
+    .hero-section { flex-direction: column; text-align: center; }
+    .hero-image img { max-height: 35vh; }
 }
