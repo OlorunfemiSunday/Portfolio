@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const navMenu = document.getElementById("nav-menu");
     const navLinks = document.querySelectorAll(".nav-items a");
     const themeBtn = document.getElementById("theme-btn");
-    const themeIcon = themeBtn.querySelector("i");
     const slider = document.getElementById("projects-slider");
     const prevBtn = document.getElementById("prev-btn");
     const nextBtn = document.getElementById("next-btn");
@@ -12,77 +11,101 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // --- 2. Dark/Light Mode Toggle ---
     const currentTheme = localStorage.getItem("theme");
+    
+    // Apply theme on load
     if (currentTheme === "dark") {
         document.documentElement.setAttribute("data-theme", "dark");
-        themeIcon.classList.replace("fa-moon", "fa-sun");
+        updateThemeIcon(true);
     }
 
-    themeBtn.addEventListener("click", () => {
-        const isDark = document.documentElement.getAttribute("data-theme") === "dark";
-        if (isDark) {
-            document.documentElement.setAttribute("data-theme", "light");
-            themeIcon.classList.replace("fa-sun", "fa-moon");
-            localStorage.setItem("theme", "light");
-        } else {
-            document.documentElement.setAttribute("data-theme", "dark");
-            themeIcon.classList.replace("fa-moon", "fa-sun");
-            localStorage.setItem("theme", "dark");
-        }
-    });
+    if (themeBtn) {
+        themeBtn.addEventListener("click", () => {
+            const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+            const newTheme = isDark ? "light" : "dark";
+            
+            document.documentElement.setAttribute("data-theme", newTheme);
+            localStorage.setItem("theme", newTheme);
+            updateThemeIcon(!isDark);
+        });
+    }
 
-    // --- 3. Mobile Menu & Navigation ---
+    function updateThemeIcon(isDark) {
+        const themeIcon = themeBtn?.querySelector("i");
+        if (!themeIcon) return;
+        
+        if (isDark) {
+            themeIcon.classList.replace("fa-moon", "fa-sun");
+        } else {
+            themeIcon.classList.replace("fa-sun", "fa-moon");
+        }
+    }
+
+    // --- 3. Mobile Menu Logic ---
     const toggleMenu = () => {
+        if (!navMenu || !hamburger) return;
         navMenu.classList.toggle("active");
         const icon = hamburger.querySelector("i");
-        icon.classList.toggle("fa-bars");
-        icon.classList.toggle("fa-times");
+        if (icon) {
+            icon.classList.toggle("fa-bars");
+            icon.classList.toggle("fa-times");
+        }
     };
 
-    hamburger.addEventListener("click", toggleMenu);
+    if (hamburger) {
+        hamburger.addEventListener("click", toggleMenu);
+    }
 
     navLinks.forEach(link => {
         link.addEventListener("click", () => {
-            if (navMenu.classList.contains("active")) toggleMenu();
+            if (navMenu?.classList.contains("active")) toggleMenu();
         });
     });
 
-    // Smooth Scrolling
+    // --- 4. Smooth Scrolling ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href');
-            if (targetId === "#") return;
+            if (targetId === "#" || !targetId.startsWith("#")) return;
+            
             e.preventDefault();
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
-                targetElement.scrollIntoView({ behavior: 'smooth' });
+                targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         });
     });
 
-    // --- 4. Carousel Logic (Show 2 Cards) ---
+    // --- 5. Carousel Logic ---
     if (slider && nextBtn && prevBtn) {
         const getScrollAmount = () => {
             const card = slider.querySelector(".project-card");
-            const gap = 20; // Matches your updated CSS gap
+            if (!card) return 300; // Fallback value
+            const style = window.getComputedStyle(slider);
+            const gap = parseInt(style.columnGap) || 20;
             return card.offsetWidth + gap;
         };
 
         nextBtn.addEventListener("click", () => {
-            slider.scrollLeft += getScrollAmount();
+            slider.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
         });
 
         prevBtn.addEventListener("click", () => {
-            slider.scrollLeft -= getScrollAmount();
+            slider.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
         });
     }
 
-    // --- 5. Form Submission & Custom Toast ---
+    // --- 6. Form Submission & Toast ---
     function showToast(message) {
-        if (!toast) return; // Guard clause if toast HTML is missing
         const toastMsg = document.getElementById("toast-message");
-        toastMsg.innerText = message;
+        if (!toast || !toastMsg) {
+            // Fallback if you forgot to add the toast HTML
+            alert(message);
+            return;
+        }
         
+        toastMsg.innerText = message;
         toast.classList.add("show");
+        
         setTimeout(() => {
             toast.classList.remove("show");
         }, 4000);
@@ -98,11 +121,9 @@ document.addEventListener("DOMContentLoaded", function () {
             btn.innerText = "Sending...";
             btn.disabled = true;
 
-            // Simulate server delay
+            // Simulated API Call
             setTimeout(() => {
-                // Replacement for alert()
                 showToast("Message sent successfully! Sunday will get back to you soon.");
-                
                 btn.innerText = originalText;
                 btn.disabled = false;
                 form.reset();
