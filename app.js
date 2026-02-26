@@ -74,32 +74,40 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // --- 5. Carousel Logic (FIXED: Removed duplicate 'const' declarations) ---
-    if (slider && nextBtn && prevBtn) {
-        const getScrollAmount = () => {
-            const card = slider.querySelector(".project-card");
-            const gap = 20; // Matches your CSS gap
-            return card ? card.offsetWidth + gap : 300;
-        };
+   // --- 5. Infinite Carousel ---
+if (slider && nextBtn && prevBtn) {
 
-        nextBtn.addEventListener("click", () => {
-            // If at the end, scroll back to start
-            if (slider.scrollLeft + slider.offsetWidth >= slider.scrollWidth - 10) {
-                slider.scrollTo({ left: 0, behavior: 'smooth' });
-            } else {
-                slider.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
-            }
-        });
+    const cards = slider.querySelectorAll(".project-card");
 
-        prevBtn.addEventListener("click", () => {
-            // If at start, scroll to the very end
-            if (slider.scrollLeft <= 10) {
-                slider.scrollTo({ left: slider.scrollWidth, behavior: 'smooth' });
-            } else {
-                slider.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
-            }
-        });
-    }
+    // Clone first & last cards for infinite illusion
+    const firstClone = cards[0].cloneNode(true);
+    const lastClone = cards[cards.length - 1].cloneNode(true);
+
+    slider.appendChild(firstClone);
+    slider.insertBefore(lastClone, cards[0]);
+
+    const cardWidth = cards[0].offsetWidth + 20; // gap included
+
+    slider.scrollLeft = cardWidth;
+
+    nextBtn.addEventListener("click", () => {
+        slider.scrollBy({ left: cardWidth, behavior: "smooth" });
+    });
+
+    prevBtn.addEventListener("click", () => {
+        slider.scrollBy({ left: -cardWidth, behavior: "smooth" });
+    });
+
+    slider.addEventListener("scroll", () => {
+        if (slider.scrollLeft <= 0) {
+            slider.scrollLeft = slider.scrollWidth - (2 * cardWidth);
+        }
+
+        if (slider.scrollLeft >= slider.scrollWidth - slider.offsetWidth) {
+            slider.scrollLeft = cardWidth;
+        }
+    });
+}
 
     // --- 6. Form Submission & Toast ---
     function showToast(message) {
