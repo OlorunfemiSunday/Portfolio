@@ -4,15 +4,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const navMenu = document.getElementById("nav-menu");
     const navLinks = document.querySelectorAll(".nav-items a");
     const themeBtn = document.getElementById("theme-btn");
-    const slider = document.getElementById("projects-slider");
-    const prevBtn = document.getElementById("prev-btn");
-    const nextBtn = document.getElementById("next-btn");
+    const slider = document.getElementById("projects-slider"); // Already declared here!
+    const prevBtn = document.getElementById("prev-btn");       // Already declared here!
+    const nextBtn = document.getElementById("next-btn");       // Already declared here!
     const toast = document.getElementById("custom-toast");
 
     // --- 2. Dark/Light Mode Toggle ---
     const currentTheme = localStorage.getItem("theme");
     
-    // Apply theme on load
     if (currentTheme === "dark") {
         document.documentElement.setAttribute("data-theme", "dark");
         updateThemeIcon(true);
@@ -75,58 +74,37 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-   // --- 5. Carousel Logic ---
-const slider = document.getElementById("projects-slider");
-const nextBtn = document.getElementById("next-btn");
-const prevBtn = document.getElementById("prev-btn");
+    // --- 5. Carousel Logic (FIXED: Removed duplicate 'const' declarations) ---
+    if (slider && nextBtn && prevBtn) {
+        const getScrollAmount = () => {
+            const card = slider.querySelector(".project-card");
+            const gap = 20; // Matches your CSS gap
+            return card ? card.offsetWidth + gap : 300;
+        };
 
-if (slider && nextBtn && prevBtn) {
-
-    const cards = slider.querySelectorAll(".project-card");
-    const gap = parseInt(getComputedStyle(slider).gap) || 20;
-
-    // Clone first and last cards for infinite loop
-    const firstCard = cards[0].cloneNode(true);
-    const lastCard = cards[cards.length - 1].cloneNode(true);
-    slider.appendChild(firstCard);
-    slider.insertBefore(lastCard, cards[0]);
-
-    // Adjust scroll to start at first real card
-    slider.scrollLeft = cards[0].offsetWidth + gap;
-
-    const getScrollAmount = () => {
-        const card = slider.querySelector(".project-card");
-        return card.offsetWidth + gap;
-    };
-
-    nextBtn.addEventListener("click", () => {
-        slider.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
-
-        // Check if we reached the cloned first card (end)
-        setTimeout(() => {
-            if (slider.scrollLeft >= (slider.scrollWidth - slider.offsetWidth)) {
-                slider.scrollLeft = cards[0].offsetWidth + gap; // reset to first real card
+        nextBtn.addEventListener("click", () => {
+            // If at the end, scroll back to start
+            if (slider.scrollLeft + slider.offsetWidth >= slider.scrollWidth - 10) {
+                slider.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+                slider.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
             }
-        }, 300); // slightly after scroll animation
-    });
+        });
 
-    prevBtn.addEventListener("click", () => {
-        slider.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
-
-        // Check if we reached the cloned last card (start)
-        setTimeout(() => {
-            if (slider.scrollLeft <= 0) {
-                slider.scrollLeft = slider.scrollWidth - slider.offsetWidth - (cards[0].offsetWidth + gap); // reset to last real card
+        prevBtn.addEventListener("click", () => {
+            // If at start, scroll to the very end
+            if (slider.scrollLeft <= 10) {
+                slider.scrollTo({ left: slider.scrollWidth, behavior: 'smooth' });
+            } else {
+                slider.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
             }
-        }, 300);
-    });
-}
+        });
+    }
 
     // --- 6. Form Submission & Toast ---
     function showToast(message) {
         const toastMsg = document.getElementById("toast-message");
         if (!toast || !toastMsg) {
-            // Fallback if you forgot to add the toast HTML
             alert(message);
             return;
         }
@@ -149,7 +127,6 @@ if (slider && nextBtn && prevBtn) {
             btn.innerText = "Sending...";
             btn.disabled = true;
 
-            // Simulated API Call
             setTimeout(() => {
                 showToast("Message sent successfully! Sunday will get back to you soon.");
                 btn.innerText = originalText;
