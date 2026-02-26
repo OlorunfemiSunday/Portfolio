@@ -4,8 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sunday Olorunfemi | Portfolio</title>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -15,7 +19,7 @@
             <span class="logo-text">portfolio.</span>
         </div>
         
-        <div class="hamburger" id="hamburger" aria-label="Menu">
+        <div class="hamburger" id="hamburger" aria-label="Open Menu">
             <i class="fas fa-bars"></i>
         </div>
         
@@ -27,10 +31,10 @@
         </ul>
 
         <div class="social-icons">
-            <a href="https://wa.me/+2348100822888" class="icon" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://www.linkedin.com/in/sunday-olorunfemi-8762aa3b0/" class="icon" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
-            <a href="https://x.com/bola_dev" class="icon" target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.instagram.com/maouz_koncept/" class="icon" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/+2348100822888" class="icon" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.linkedin.com/in/sunday-olorunfemi-8762aa3b0/" class="icon" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://x.com/bola_dev" class="icon" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/maouz_koncept/" class="icon" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
             
             <button id="theme-btn" class="theme-toggle" aria-label="Toggle Dark Mode">
                 <i class="fas fa-moon"></i>
@@ -82,44 +86,45 @@
     </section>
 
     <section class="projects-section" id="projects">
-    <h2 class="section-title">My Projects</h2>
+        <h2 class="section-title">My Projects</h2>
 
-    <div class="carousel-wrapper">
-        <!-- Previous Button -->
-        <button class="carousel-btn prev" id="prev-btn" aria-label="Previous Project">
-            <i class="fas fa-chevron-left"></i>
-        </button>
+        <div class="carousel-wrapper">
+            <button class="carousel-btn prev" id="prev-btn" aria-label="Previous Project">
+                <i class="fas fa-chevron-left"></i>
+            </button>
 
-        <!-- Projects Slider -->
-        <div class="projects-container" id="projects-slider">
-            <div class="project-card">
-                <img src="./Images/African Pot.png" alt="African Pot" />
-                <div class="project-overlay">
-                    <a href="https://african-pot.onrender.com" class="view-btn" target="_blank" rel="noopener">View Project</a>
+            <div class="projects-container" id="projects-slider">
+                <div class="project-card">
+                    <img src="./Images/African Pot.png" alt="African Pot Project" />
+                    <div class="project-overlay">
+                        <a href="https://african-pot.onrender.com" class="view-btn" target="_blank" rel="noopener">View Project</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="./Images/RetroRest.png" alt="Retrorest Project" />
+                    <div class="project-overlay">
+                        <a href="https://retrorest.onrender.com" class="view-btn" target="_blank" rel="noopener">View Project</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="./Images/African Pot.png" alt="Sample Project" />
+                    <div class="project-overlay">
+                        <a href="#" class="view-btn" target="_blank" rel="noopener">View Project</a>
+                    </div>
                 </div>
             </div>
 
-            <div class="project-card">
-                <img src="./Images/RetroRest.png" alt="Retrorest" />
-                <div class="project-overlay">
-                    <a href="https://retrorest.onrender.com" class="view-btn" target="_blank" rel="noopener">View Project</a>
-                </div>
-            </div>
-
-            <!-- Add more project cards below as needed -->
+            <button class="carousel-btn next" id="next-btn" aria-label="Next Project">
+                <i class="fas fa-chevron-right"></i>
+            </button>
         </div>
 
-        <!-- Next Button -->
-        <button class="carousel-btn next" id="next-btn" aria-label="Next Project">
-            <i class="fas fa-chevron-right"></i>
-        </button>
-    </div>
-
-    <!-- GitHub Link -->
-    <div style="margin-top: 40px;">
-        <a href="https://github.com/OlorunfemiSunday" class="btn-primary" target="_blank" rel="noopener">See More on GitHub</a>
-    </div>
-</section>
+        <div style="margin-top: 40px;">
+            <a href="https://github.com/OlorunfemiSunday" class="btn-primary" target="_blank" rel="noopener">See More on GitHub</a>
+        </div>
+    </section>
 
     <section class="contact-section" id="contact">
         <div class="container">
@@ -131,12 +136,13 @@
                         <input type="text" placeholder="Your Name" required>
                         <input type="email" placeholder="Your Email" required>
                         <div class="form-row">
-                            <input type="date" required aria-label="Date">
-                            <input type="time" required aria-label="Time">
+                            <input type="date" required aria-label="Select Date">
+                            <input type="time" required aria-label="Select Time">
                         </div>
                         <button type="submit" class="btn-primary">Schedule Now</button>
                     </form>
                 </div>
+                
                 <div class="form-box">
                     <h3>Send Feedback</h3>
                     <form id="feedback-form">
