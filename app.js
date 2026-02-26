@@ -1,17 +1,22 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // --- 1. Selectors ---
+
+    // ===============================
+    // 1. SELECTORS
+    // ===============================
     const hamburger = document.getElementById("hamburger");
     const navMenu = document.getElementById("nav-menu");
     const navLinks = document.querySelectorAll(".nav-items a");
     const themeBtn = document.getElementById("theme-btn");
-    const slider = document.getElementById("projects-slider"); // Already declared here!
-    const prevBtn = document.getElementById("prev-btn");       // Already declared here!
-    const nextBtn = document.getElementById("next-btn");       // Already declared here!
+    const slider = document.getElementById("projects-slider");
+    const prevBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
     const toast = document.getElementById("custom-toast");
 
-    // --- 2. Dark/Light Mode Toggle ---
+    // ===============================
+    // 2. DARK / LIGHT MODE
+    // ===============================
     const currentTheme = localStorage.getItem("theme");
-    
+
     if (currentTheme === "dark") {
         document.documentElement.setAttribute("data-theme", "dark");
         updateThemeIcon(true);
@@ -21,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
         themeBtn.addEventListener("click", () => {
             const isDark = document.documentElement.getAttribute("data-theme") === "dark";
             const newTheme = isDark ? "light" : "dark";
-            
+
             document.documentElement.setAttribute("data-theme", newTheme);
             localStorage.setItem("theme", newTheme);
             updateThemeIcon(!isDark);
@@ -31,28 +36,27 @@ document.addEventListener("DOMContentLoaded", function () {
     function updateThemeIcon(isDark) {
         const themeIcon = themeBtn?.querySelector("i");
         if (!themeIcon) return;
-        
-        if (isDark) {
-            themeIcon.classList.replace("fa-moon", "fa-sun");
-        } else {
-            themeIcon.classList.replace("fa-sun", "fa-moon");
-        }
+
+        themeIcon.classList.toggle("fa-moon", !isDark);
+        themeIcon.classList.toggle("fa-sun", isDark);
     }
 
-    // --- 3. Mobile Menu Logic ---
-    const toggleMenu = () => {
+    // ===============================
+    // 3. MOBILE MENU
+    // ===============================
+    function toggleMenu() {
         if (!navMenu || !hamburger) return;
+
         navMenu.classList.toggle("active");
+
         const icon = hamburger.querySelector("i");
         if (icon) {
             icon.classList.toggle("fa-bars");
             icon.classList.toggle("fa-times");
         }
-    };
-
-    if (hamburger) {
-        hamburger.addEventListener("click", toggleMenu);
     }
+
+    hamburger?.addEventListener("click", toggleMenu);
 
     navLinks.forEach(link => {
         link.addEventListener("click", () => {
@@ -60,78 +64,118 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // --- 4. Smooth Scrolling ---
+    // ===============================
+    // 4. SMOOTH SCROLL
+    // ===============================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            const targetId = this.getAttribute('href');
-            if (targetId === "#" || !targetId.startsWith("#")) return;
-            
+        anchor.addEventListener("click", function (e) {
+            const targetId = this.getAttribute("href");
+            if (!targetId || targetId === "#") return;
+
+            const target = document.querySelector(targetId);
+            if (!target) return;
+
             e.preventDefault();
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
+            target.scrollIntoView({ behavior: "smooth" });
         });
     });
 
-   // --- 5. Infinite Carousel ---
-if (slider && nextBtn && prevBtn) {
+    // ===============================
+    // 5. IMPROVED INFINITE CAROUSEL
+    // ===============================
+    if (slider && nextBtn && prevBtn) {
 
-    const cards = slider.querySelectorAll(".project-card");
+        let cards = slider.querySelectorAll(".project-card");
+        if (cards.length < 2) return; // Not enough cards for infinite
 
-    // Clone first & last cards for infinite illusion
-    const firstClone = cards[0].cloneNode(true);
-    const lastClone = cards[cards.length - 1].cloneNode(true);
+        let cardWidth;
+        let isTransitioning = false;
 
-    slider.appendChild(firstClone);
-    slider.insertBefore(lastClone, cards[0]);
+        function setupCarousel() {
+            cards = slider.querySelectorAll(".project-card");
 
-    const cardWidth = cards[0].offsetWidth + 20; // gap included
+            // Remove old clones (if resize triggered setup again)
+            slider.querySelectorAll(".clone").forEach(el => el.remove());
 
-    slider.scrollLeft = cardWidth;
+            const firstClone = cards[0].cloneNode(true);
+            const lastClone = cards[cards.length - 1].cloneNode(true);
 
-    nextBtn.addEventListener("click", () => {
-        slider.scrollBy({ left: cardWidth, behavior: "smooth" });
-    });
+            firstClone.classList.add("clone");
+            lastClone.classList.add("clone");
 
-    prevBtn.addEventListener("click", () => {
-        slider.scrollBy({ left: -cardWidth, behavior: "smooth" });
-    });
+            slider.appendChild(firstClone);
+            slider.insertBefore(lastClone, cards[0]);
 
-    slider.addEventListener("scroll", () => {
-        if (slider.scrollLeft <= 0) {
-            slider.scrollLeft = slider.scrollWidth - (2 * cardWidth);
-        }
+            cardWidth = cards[0].offsetWidth + 20; // 20 = CSS gap
 
-        if (slider.scrollLeft >= slider.scrollWidth - slider.offsetWidth) {
             slider.scrollLeft = cardWidth;
         }
-    });
-}
 
-    // --- 6. Form Submission & Toast ---
+        setupCarousel();
+
+        // Recalculate on resize
+        window.addEventListener("resize", () => {
+            setupCarousel();
+        });
+
+        nextBtn.addEventListener("click", () => {
+            if (isTransitioning) return;
+            isTransitioning = true;
+            slider.scrollBy({ left: cardWidth, behavior: "smooth" });
+            setTimeout(() => isTransitioning = false, 400);
+        });
+
+        prevBtn.addEventListener("click", () => {
+            if (isTransitioning) return;
+            isTransitioning = true;
+            slider.scrollBy({ left: -cardWidth, behavior: "smooth" });
+            setTimeout(() => isTransitioning = false, 400);
+        });
+
+        slider.addEventListener("scroll", () => {
+
+            if (slider.scrollLeft <= 0) {
+                slider.style.scrollBehavior = "auto";
+                slider.scrollLeft = slider.scrollWidth - (2 * cardWidth);
+                slider.style.scrollBehavior = "smooth";
+            }
+
+            if (slider.scrollLeft >= slider.scrollWidth - slider.offsetWidth) {
+                slider.style.scrollBehavior = "auto";
+                slider.scrollLeft = cardWidth;
+                slider.style.scrollBehavior = "smooth";
+            }
+        });
+    }
+
+    // ===============================
+    // 6. FORM + TOAST
+    // ===============================
     function showToast(message) {
         const toastMsg = document.getElementById("toast-message");
+
         if (!toast || !toastMsg) {
             alert(message);
             return;
         }
-        
+
         toastMsg.innerText = message;
         toast.classList.add("show");
-        
+
         setTimeout(() => {
             toast.classList.remove("show");
         }, 4000);
     }
 
-    const forms = document.querySelectorAll("form");
-    forms.forEach(form => {
+    document.querySelectorAll("form").forEach(form => {
         form.addEventListener("submit", (e) => {
             e.preventDefault();
+
             const btn = form.querySelector("button");
+            if (!btn) return;
+
             const originalText = btn.innerText;
-            
+
             btn.innerText = "Sending...";
             btn.disabled = true;
 
@@ -143,4 +187,5 @@ if (slider && nextBtn && prevBtn) {
             }, 1500);
         });
     });
+
 });
