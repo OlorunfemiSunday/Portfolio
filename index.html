@@ -135,34 +135,36 @@
     </div>
 </section>
 
-    <section class="contact-section" id="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="form-container">
-                <div class="form-box">
-                    <h3>Book an Appointment</h3>
-                    <form id="appointment-form">
-                        <input type="text" placeholder="Your Name" required>
-                        <input type="email" placeholder="Your Email" required>
-                        <div class="form-row">
-                            <input type="date" required>
-                            <input type="time" required>
-                        </div>
-                        <button type="submit" class="btn-primary">Schedule Now</button>
-                    </form>
+ <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+<section class="contact-section" id="contact">
+    <div class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="form-container">
+            <div class="form-box">
+                <h3>Book an Appointment</h3>
+                <div class="calendly-inline-widget" 
+                     data-url="https://calendly.com/YOUR_LINK_HERE" 
+                     style="min-width:320px; height:500px;">
                 </div>
-                <div class="form-box">
-                    <h3>Send Feedback</h3>
-                    <form id="feedback-form">
-                        <input type="text" placeholder="Your Name" required>
-                        <textarea rows="5" placeholder="Your Message" required></textarea>
-                        <button type="submit" class="btn-primary">Send Message</button>
-                    </form>
+            </div>
+
+            <div class="form-box">
+                <h3>Send Feedback</h3>
+                <form id="feedback-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea rows="8" placeholder="How was your experience with MediChats?" required></textarea>
+                    <button type="submit" class="btn-primary">Send Message</button>
+                </form>
+                <div id="feedback-success" style="display:none; color: #03E1D2; margin-top: 15px;">
+                    Message sent successfully!
                 </div>
             </div>
         </div>
-    </section>
-
+    </div>
+</section>
+    
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-about">
