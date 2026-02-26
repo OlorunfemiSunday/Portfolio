@@ -75,24 +75,52 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // --- 5. Carousel Logic ---
-    if (slider && nextBtn && prevBtn) {
-        const getScrollAmount = () => {
-            const card = slider.querySelector(".project-card");
-            if (!card) return 300; // Fallback value
-            const style = window.getComputedStyle(slider);
-            const gap = parseInt(style.columnGap) || 20;
-            return card.offsetWidth + gap;
-        };
+   // --- 5. Carousel Logic ---
+const slider = document.getElementById("projects-slider");
+const nextBtn = document.getElementById("next-btn");
+const prevBtn = document.getElementById("prev-btn");
 
-        nextBtn.addEventListener("click", () => {
-            slider.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
-        });
+if (slider && nextBtn && prevBtn) {
 
-        prevBtn.addEventListener("click", () => {
-            slider.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
-        });
-    }
+    const cards = slider.querySelectorAll(".project-card");
+    const gap = parseInt(getComputedStyle(slider).gap) || 20;
+
+    // Clone first and last cards for infinite loop
+    const firstCard = cards[0].cloneNode(true);
+    const lastCard = cards[cards.length - 1].cloneNode(true);
+    slider.appendChild(firstCard);
+    slider.insertBefore(lastCard, cards[0]);
+
+    // Adjust scroll to start at first real card
+    slider.scrollLeft = cards[0].offsetWidth + gap;
+
+    const getScrollAmount = () => {
+        const card = slider.querySelector(".project-card");
+        return card.offsetWidth + gap;
+    };
+
+    nextBtn.addEventListener("click", () => {
+        slider.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+
+        // Check if we reached the cloned first card (end)
+        setTimeout(() => {
+            if (slider.scrollLeft >= (slider.scrollWidth - slider.offsetWidth)) {
+                slider.scrollLeft = cards[0].offsetWidth + gap; // reset to first real card
+            }
+        }, 300); // slightly after scroll animation
+    });
+
+    prevBtn.addEventListener("click", () => {
+        slider.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+
+        // Check if we reached the cloned last card (start)
+        setTimeout(() => {
+            if (slider.scrollLeft <= 0) {
+                slider.scrollLeft = slider.scrollWidth - slider.offsetWidth - (cards[0].offsetWidth + gap); // reset to last real card
+            }
+        }, 300);
+    });
+}
 
     // --- 6. Form Submission & Toast ---
     function showToast(message) {
