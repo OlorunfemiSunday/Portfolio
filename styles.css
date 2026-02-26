@@ -1,12 +1,4 @@
-body {
-    margin: 0;
-    padding: 0;
-    /* Use the variables you defined in :root */
-    background-color: var(--bg-color);
-    color: var(--text-main);
-    font-family: 'Inter', sans-serif; /* Make sure this is imported! */
-    transition: all var(--transition-speed);
-}
+ 
 :root {
     /* Brand Colors */
     --primary: #6b57ed;
